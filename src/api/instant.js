@@ -8,7 +8,7 @@ import prodConfig from './prodConfig'
 const getApiInstant = function({ config = null, isReplaceConfig = false }){
   // check if instance is available
   if (!apiInstant || isReplaceConfig) {
-    apiInstant = axios.create(config || defaultConfig);
+    apiInstant = axios.create(config);
     // delete apiInstant.constructor; 
   }
   return apiInstant;
@@ -19,6 +19,6 @@ export default (config, isReplaceConfig) => {
     if (process.env.NODE_ENV === 'production') {
       defaultConfig = prodConfig
     }
-    const apiManagerSingleton = makeSingleton(getApiInstant, { config, isReplaceConfig })
+    const apiManagerSingleton = makeSingleton(getApiInstant, { config: config || defaultConfig, isReplaceConfig })
     return apiManagerSingleton.getInstance()
 }

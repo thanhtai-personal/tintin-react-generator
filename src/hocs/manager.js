@@ -1,42 +1,45 @@
+const combineHoc = (hocObj) => {
+  return Object.keys(hocObj).map((key) => hocObj[key])
+}
+
 function createHocs() {
-  // Create an object which maps keys to reducers
+  // Create an object which maps keys to hocs
   const hocObj = {}
-  // Create the initial combinedReducer
+  // Create the initial combinedHOC
   let hocs = []
 
   return {
-    getHocsMap: () => appRoutes,
+    getHocsMap: () => hocObj,
 
-    // The root reducer function exposed by this object
-    // This will be passed to the store
+    // The root HOC function exposed by this object
     reduce: () => {
       return hocs
     },
 
-    // Adds a new reducer with the specified key
+    // Adds a new HOC with the specified key
     add: (key, hoc) => {
       if (!key || hocObj[key]) {
         return
       }
 
-      // Add the reducer to the reducer mapping
-      hocObj[key] = featureRoute
+      // Add the HOC to the HOC mapping
+      hocObj[key] = hoc
 
-      // Generate a new combined reducer
-      hocs = combineRoute(hocObj)
+      // Generate a new combined HOC
+      hocs = combineHoc(hocObj)
     },
 
-    // Removes a reducer with the specified key
+    // Removes a HOC with the specified key
     remove: key => {
       if (!key || !hocObj[key]) {
         return
       }
 
-      // Remove it from the reducer mapping
+      // Remove it from the HOC mapping
       delete hocObj[key]
 
-      // Generate a new combined reducer
-      hocs = combineRoute(hocObj)
+      // Generate a new combined HOC
+      hocs = combineHoc(hocObj)
     }
   }
 }

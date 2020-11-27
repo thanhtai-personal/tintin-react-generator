@@ -2,9 +2,9 @@ import { applyMiddleware, compose, createStore } from 'redux'
 import createSagaMiddleware  from 'redux-saga'
 import { routerMiddleware } from 'connected-react-router'
 
-import loggerMiddleware from './middlewares/logger.middlewares'
-import createReducerManager from './reducers'
-import createSagasManager from './sagas'
+import loggerMiddleware from 'root/middlewares/logger.middlewares'
+import createReducerManager from 'root/managers/reducer/instant'
+import createSagasManager from 'root/managers/sagas/instant'
 
 export default function configureStore(initialState, history) {
   const sagaMiddleware = createSagaMiddleware()
@@ -28,12 +28,17 @@ export default function configureStore(initialState, history) {
 
   // Create an inject reducer function
   // This function adds the async reducer, and creates a new combined reducer
-  store.reducerManager = reducerManager
-  store.sagasManager = sagasManager
-
-  if (process.env.NODE_ENV !== 'production' && module.hot) {
-    module.hot.accept('./reducers', () => store.replaceReducer(reducerManager.reduce))
+  store.updateReducer = () => {
+    store.replaceReducer(store.reducerManager.reduce)
   }
+  store.updateSagas = () => {
+    sagaMiddleware.run(sagasManager.reduce)
+  }
+
+  // if (process.env.NODE_ENV !== 'production' && module.hot) {
+  //   module.hot.accept('root/managers/reducer/instant', () => store.updateReducer())
+  //   module.hot.accept('root/managers/sagas/instant', () => store.updateSagas())
+  // }
 
   return store
 }

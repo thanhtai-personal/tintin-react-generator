@@ -1,7 +1,9 @@
 import { makeSingleton } from 'root/utils'
-import createHocsInstant from './manager'
+import createHocsManager from './manager'
 
-export default () => {
-    const hocsManagerSingleton = makeSingleton(createHocsInstant)
+const getHocsInstant = () => {
+    const hocsManagerSingleton = makeSingleton(createHocsManager)
     return hocsManagerSingleton.getInstance()
 }
+
+export default getHocsInstant

@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'
-import LoadingComponent from 'root/commonComponent/loading'
+import LoadingComponent from 'root/commonComponents/loading'
 
 const HomeComponent = React.lazy(() => import('../components/default'))
 

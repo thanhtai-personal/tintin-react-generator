@@ -1,7 +1,7 @@
 import { makeSingleton } from 'root/utils'
-import createApisIntant from './manager'
+import createApiManager from './manager'
 
 export default () => {
-    const apiManagerSingleton = makeSingleton(createApisIntant)
+    const apiManagerSingleton = makeSingleton(createApiManager)
     return apiManagerSingleton.getInstance()
 }

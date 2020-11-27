@@ -28,10 +28,10 @@ function combineApi(apis) {
 
 
 export default function apiManager() {
-    // Create an object which maps keys to reducers
+    // Create an object which maps keys to Apis
     let apis = {}
   
-    // Create the initial combinedReducer
+    // Create the initial combinedApi
     let combinedApi = combineApi(apis)
   
     return {
@@ -43,35 +43,35 @@ export default function apiManager() {
         return combinedApi[apiName](data, config)
       },
   
-      // The root reducer function exposed by this object
+      // The root Api function exposed by this object
       // This will be passed to the store
       reduce: () => {
         return combinedApi
       },
   
-      // Adds a new reducer with the specified key
+      // Adds a new Api with the specified key
       add: (key, api) => {
         if (!key || apis[key]) {
           return
         }
   
-        // Add the reducer to the reducer mapping
+        // Add the Api to the Api mapping
         apis[key] = api
   
-        // Generate a new combined reducer
+        // Generate a new combined Api
         combinedApi = combineApi(apis)
       },
   
-      // Removes a reducer with the specified key
+      // Removes a Api with the specified key
       remove: key => {
         if (!key || !apis[key]) {
           return
         }
   
-        // Remove it from the reducer mapping
+        // Remove it from the Api mapping
         delete apis[key]
   
-        // Generate a new combined reducer
+        // Generate a new combined Api
         combinedApi = combineApi(apis)
       }
     }

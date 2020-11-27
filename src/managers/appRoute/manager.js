@@ -21,43 +21,43 @@ const combineRoute = (appRoutes) => {
 }
 
 function createAppRoute() {
-  // Create an object which maps keys to reducers
+  // Create an object which maps keys to App routes
   const appRoutes = {}
-  // Create the initial combinedReducer
+  // Create the initial combinedapp route
   let combinedAppRoute = combineRoute(appRoutes)
 
   return {
     getAppRouteMap: () => appRoutes,
 
-    // The root reducer function exposed by this object
+    // The root app route function exposed by this object
     // This will be passed to the store
     reduce: () => {
       return combinedAppRoute
     },
 
-    // Adds a new reducer with the specified key
+    // Adds a new app route with the specified key
     add: (key, featureRoute) => {
       if (!key || appRoutes[key]) {
         return
       }
 
-      // Add the reducer to the reducer mapping
+      // Add the app route to the app route mapping
       appRoutes[key] = featureRoute
 
-      // Generate a new combined reducer
+      // Generate a new combined app route
       combinedAppRoute = combineRoute(appRoutes)
     },
 
-    // Removes a reducer with the specified key
+    // Removes a app route with the specified key
     remove: key => {
       if (!key || !appRoutes[key]) {
         return
       }
 
-      // Remove it from the reducer mapping
+      // Remove it from the app route mapping
       delete appRoutes[key]
 
-      // Generate a new combined reducer
+      // Generate a new combined app route
       combinedAppRoute = combineRoute(appRoutes)
     }
   }

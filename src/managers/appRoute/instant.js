@@ -1,7 +1,9 @@
 import { makeSingleton } from 'root/utils'
-import createAppRoutesIntant from './manager'
+import createAppRouteManager from './manager'
 
-export default () => {
-    const appRouteManagerSingleton = makeSingleton(createAppRoutesIntant)
+const getAppRouteInstant = () => {
+    const appRouteManagerSingleton = makeSingleton(createAppRouteManager)
     return appRouteManagerSingleton.getInstance()
 }
+
+export default getAppRouteInstant
