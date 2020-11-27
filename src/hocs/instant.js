@@ -1,8 +1,8 @@
-import { makeSingleton } from 'root/utils'
+import Utils from 'root/utils'
 import createHocsManager from './manager'
 
 const getHocsInstant = () => {
-    const hocsManagerSingleton = makeSingleton(createHocsManager)
+    const hocsManagerSingleton = Utils.makeSingleton(createHocsManager)
     return hocsManagerSingleton.getInstance()
 }
 

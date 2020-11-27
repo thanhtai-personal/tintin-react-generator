@@ -1,5 +1,6 @@
 
 
+import Utils from 'root/utils'
 import { 
   //put
   takeLatest
@@ -11,13 +12,13 @@ import {
   DEFAULT_ACTION
 } from './../actions/types'
 import { defaultApiNames } from './../apis'
-import apiManager from 'root/manager/apis'
+import apiManagerInstant from 'root/managers/api/instant'
 
-const APIManager = apiManager()
+const apiManager = apiManagerInstant()
 
 function* defaultSaga(action = {}) {
-  const defaultRes = yield APIManager.call(defaultApiNames.default, action.payload || {}).then(response => response)
-  yield put({ type: makeSagasActionType(DEFAULT_ACTION).SUCCESS, payload: defaultRes || {} })
+  const defaultRes = yield apiManager.call(defaultApiNames.default, action.payload || {}).then(response => response)
+  yield put({ type: Utils.makeSagasActionType(DEFAULT_ACTION).SUCCESS, payload: defaultRes || {} })
 }
 
 export default function* defaultWatcher() {

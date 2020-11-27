@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { makeSingleton } from 'root/utils'
+import Utils from 'root/utils'
 import devConfig from './devConfig'
 import prodConfig from './prodConfig'
 
@@ -19,6 +19,6 @@ export default (config, isReplaceConfig) => {
     if (process.env.NODE_ENV === 'production') {
       defaultConfig = prodConfig
     }
-    const apiManagerSingleton = makeSingleton(getApiInstant, { config: config || defaultConfig, isReplaceConfig })
+    const apiManagerSingleton = Utils.makeSingleton(getApiInstant, { config: config || defaultConfig, isReplaceConfig })
     return apiManagerSingleton.getInstance()
 }

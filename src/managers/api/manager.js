@@ -27,7 +27,7 @@ function combineApi(apis) {
 }
 
 
-export default function apiManager() {
+function apiManager() {
     // Create an object which maps keys to Apis
     let apis = {}
   

@@ -1,4 +1,6 @@
-export const makeSingleton = (makeInstantFunc, dataInit) => {
+import actionHelpers from './actionHelpers'
+
+const makeSingleton = (makeInstantFunc, dataInit) => {
     return (function () {
         var instance;
         return {
@@ -12,4 +14,9 @@ export const makeSingleton = (makeInstantFunc, dataInit) => {
             }
         }
     })()
+}
+
+export default {
+    ...actionHelpers
+    , makeSingleton
 }

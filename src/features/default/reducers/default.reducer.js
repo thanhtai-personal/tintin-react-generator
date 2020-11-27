@@ -1,11 +1,8 @@
 
+import Utils from 'root/utils'
 import {
   DEFAULT_ACTION,
 } from '../actions/types'
-
-const forms = [
-  FORM_LOGIN, FORM_REGISTER,
-]
 
 const initalState = {
   title: 'default'
@@ -19,12 +16,12 @@ const defaultReducer = (state = initalState, { type, payload }) => {
         ...state,
         ...payload
       }
-    case makeSagasActionType(DEFAULT_ACTION).SUCCESS:
+    case Utils.makeSagasActionType(DEFAULT_ACTION).SUCCESS:
       return {
         ...state,
         ...payload
       }
-    case makeSagasActionType(DEFAULT_ACTION).FAILED:
+    case Utils.makeSagasActionType(DEFAULT_ACTION).FAILED:
       return {
         ...state,
         ...payload

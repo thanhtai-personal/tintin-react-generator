@@ -25,7 +25,9 @@ export default function configureStore(initialState, history) {
   store.asyncReducers = {}
 
   sagaMiddleware.run(sagasManager.reduce)
-
+  
+  store.reducerManager = reducerManager
+  store.sagasManager = sagasManager
   // Create an inject reducer function
   // This function adds the async reducer, and creates a new combined reducer
   store.updateReducer = () => {

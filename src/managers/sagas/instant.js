@@ -1,8 +1,8 @@
-import { makeSingleton } from 'root/utils'
+import Utils from 'root/utils'
 import createSagasManager from './manager'
 
 const getSagaInstant = () => {
-    const sagasManagerSingleton = makeSingleton(createSagasManager)
+    const sagasManagerSingleton = Utils.makeSingleton(createSagasManager)
     return sagasManagerSingleton.getInstance()
 }
 
