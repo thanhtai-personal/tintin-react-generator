@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export default {
   // `url` is the server URL that will be used for the request
   url: '',

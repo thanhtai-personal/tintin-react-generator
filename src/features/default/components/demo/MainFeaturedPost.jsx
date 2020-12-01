@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
+import bannerImage from 'root/assert/images/mini-profile-bg-01.jpg'
 
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
@@ -12,10 +12,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
-    backgroundImage: 'url(https://source.unsplash.com/random)',
+    backgroundImage: `url(${bannerImage})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
+    minHeight: '53em'
   },
   overlay: {
     position: 'absolute',
@@ -31,8 +32,33 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       padding: theme.spacing(6),
       paddingRight: 0,
-    },
+    }
   },
+  bannerContent: {
+    paddingTop: '20em',
+    paddingLeft: '45%'
+  },
+  title: {
+    paddingLeft: '15%',
+    opacity: 0.8,
+    color: 'orange',
+    fontFamily: 'fantasy',
+    display: 'inline-block'
+  },
+  subTitle: {
+    paddingLeft: '30%',
+    opacity: 0.8,
+    color: 'orange',
+    fontFamily: 'fantasy',
+    display: 'inline-block'
+  },
+  description: {
+    paddingTop: theme.spacing(3),
+    color: 'white',
+    fontFamily: 'fantasy',
+    paddingLeft: '35%',
+    paddingRight: '5%'
+  }
 }));
 
 export default function MainFeaturedPost(props) {
@@ -41,21 +67,20 @@ export default function MainFeaturedPost(props) {
 
   return (
     <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(${post.image})` }}>
-      {/* Increase the priority of the hero background image */}
       {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
       <div className={classes.overlay} />
-      <Grid container>
-        <Grid item md={6}>
+      <Grid container className={classes.bannerContent}>
+        <Grid item md={12}>
           <div className={classes.mainFeaturedPostContent}>
-            <Typography component="h1" variant="h3" color="inherit" gutterBottom>
+            <Typography className={classes.title} component='h1' variant='h2' color='inherit' gutterBottom>
               {post.title}
             </Typography>
-            <Typography variant="h5" color="inherit" paragraph>
+            <Typography className={classes.subTitle} variant='h4' color='inherit' paragraph>
+              {post.subTitle}
+            </Typography>
+            <Typography className={classes.description} variant='h5' color='inherit' paragraph>
               {post.description}
             </Typography>
-            <Link variant="subtitle1" href="#">
-              {post.linkText}
-            </Link>
           </div>
         </Grid>
       </Grid>
