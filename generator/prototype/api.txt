@@ -1,0 +1,13 @@
+export const apiNameNames = {
+  default: 'default'
+}
+
+const apiName = [
+  {
+    method: 'post',
+    name: apiNameNames.default,
+    path: '/api-path',
+  }
+]
+
+export default apiName

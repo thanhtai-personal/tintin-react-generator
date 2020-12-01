@@ -1,0 +1,12 @@
+import React from 'react'
+
+const ComponentName = React.lazy(() => import('componentPath'))
+
+
+const ContainerName = (props) => {
+  return (
+    <ComponentName />
+  )
+}
+
+export default ContainerName
