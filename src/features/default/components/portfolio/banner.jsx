@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { makeStyles } from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
 import bannerImage from 'root/assert/images/mini-profile-bg-01.jpg'
 
 const useStyles = makeStyles((theme) => ({
@@ -59,15 +59,17 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '11em',
     float: 'right'
   }
-}));
+}))
 
 export default function Banner(props) {
-  const classes = useStyles();
-  const { post } = props;
+  const classes = useStyles()
+  const { post } = props
 
   return (
     <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(${post.image})` }}>
-      {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
+      {<picture>
+        <img style={{ display: 'none' }} src={post.image} alt={post.imageText} />
+      </picture>}
       <div className={classes.overlay} />
       <div className={classes.mainFeaturedPostContent}>
         <Grid container className={classes.bannerContent}>
@@ -92,9 +94,9 @@ export default function Banner(props) {
         </Grid>
       </div>
     </Paper>
-  );
+  )
 }
 
 Banner.propTypes = {
   post: PropTypes.object,
-};
+}

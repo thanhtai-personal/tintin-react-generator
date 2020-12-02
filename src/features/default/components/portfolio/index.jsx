@@ -1,15 +1,20 @@
 import React, { useState } from 'react'
 import { createTimelineItem } from '../timeline/util/util'
 import Timeline from '../timeline/lib/timeline'
-import { CircularProgress, makeStyles, CssBaseline, Container } from '@material-ui/core'
+import { CircularProgress, makeStyles, CssBaseline, Container, Paper } from '@material-ui/core'
 import { Spring, animated as a } from 'react-spring/renderprops'
 import Banner from './banner'
 import Footer from './footer'
+import Profile from './profile'
 
 const useStyle = makeStyles(theme => {
   return  {
     BackRed: {
       backgroundColor: 'blue',
+    },
+    experiencesPaper: {
+      backgroundColor: 'gray',
+      paddingTop: theme.spacing(2)
     }
   }
 })
@@ -97,19 +102,23 @@ const Portfolio = (props) => {
       <Container maxWidth="lg">
         <main>
           <Banner post={props.bannerData} />
-          <Timeline
-            title={'Experiences'}
-            stackedImages={!isDesktop}
-            isLeft={isLeft}
-            isOneWay={!isDesktop}
-            wrapItem={wrapItem}>
-            {timelineItems.length > 0 ? timelineItems : (<CircularProgress style={
-              {
-                alignSelf: 'center',
-                background: this.props.theme.palette.background.default
-              }
-            } />)}
-          </Timeline>
+          <Profile profileData={props.profileData}/>
+          <Paper className={classes.experiencesPaper}>
+            <Timeline
+              title={'Experiences'}
+              stackedImages={!isDesktop}
+              isLeft={isLeft}
+              isOneWay={!isDesktop}
+              wrapItem={wrapItem}>
+              {timelineItems.length > 0 ? timelineItems : (<CircularProgress style={
+                {
+                  alignSelf: 'center',
+                  background: this.props.theme.palette.background.default
+                }
+              } />)}
+            </Timeline>
+          </Paper>
+          
         </main>
       </Container>
       <Footer title='Thank you!' description='See you again!' />

@@ -55,9 +55,6 @@ export const createTimelineItem = (key, item, index, isDesktop) => {
             padTop
             hasDivider />
     )
-
-    console.log(timelineItem)
-
     return timelineItem
 
 }

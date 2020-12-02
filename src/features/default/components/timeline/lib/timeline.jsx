@@ -8,6 +8,8 @@ const useStyles = makeStyles(theme => {
 		Timeline: {
 			listStylePosition: 'inside',
 			listStyleType: 'none',
+			paddingRight: theme.spacing(2),
+			paddingBottom: theme.spacing(8)
 		},
 		TimelineElement: {
 			position: 'relative', /* so that pseudoelements are positioned relatively to their 'li's*/
@@ -22,7 +24,8 @@ const useStyles = makeStyles(theme => {
 			direction: 'rtl',
 		},
 		title: {
-			width: '100%'
+			width: '100%',
+			color: 'white'
 		}
 	}
 })

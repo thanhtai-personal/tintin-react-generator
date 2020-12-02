@@ -10,6 +10,7 @@ import citynowLogo from 'root/assert/images/citynowLogo.jpg'
 import gameLoftLogo from 'root/assert/images/gameloftLogo.png'
 import fujinetLogo from 'root/assert/images/fujinetlogo.png'
 import natureScienceLogo from 'root/assert/images/hcmusLogo.png'
+import profileImageDefault from 'root/assert/images/profile-image-default.jpg'
 
 const initalState = {
   bannerData: {
@@ -17,6 +18,35 @@ const initalState = {
     subTitle: 'ReactJS - Web developer',
     description:'Hello someone, so very happy to have you here to visit my site.',
     image: bannerImage,
+  },
+  profileData: {
+    image: profileImageDefault,
+    imageText: 'profile image',
+    sortDescription: `I am a highly motivated full-stack web developer who loves to write a scalable code and research to do it
+    , and alway try to create apps with more and more comfortable for user.
+    Ambitious and looking forward to work with people who also loves coding and make users happy.`,
+    informations: [
+      {
+        key: 'birthDay',
+        name: 'Birthdate',
+        value: '05/06/1993'
+      },
+      {
+        key: 'phone',
+        name: 'Phone',
+        value: '0972828264'
+      },
+      {
+        key: 'email',
+        name: 'Email',
+        value: 'thanhtai.tttgalaxy@gmail.com'
+      },
+      {
+        key: 'address',
+        name: 'Address',
+        value: 'Tan Thoi Hiep, 12 district, Ho Chi Minh city, Viet Nam'
+      }
+    ]
   },
   experiences:
     [
