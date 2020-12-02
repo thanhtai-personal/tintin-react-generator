@@ -38,7 +38,7 @@ const sections = [
 const mainFeaturedPost = {
   title: 'THANH TÀI TRẦN',
   subTitle: 'ReactJS - Web developer',
-  description: `Hello someone, so very happy to have you here to visit my site. \nYou are welcome`,
+  description: `Hello someone, so very happy to have you here to visit my site.`,
   image: bannerImage,
   imgText: 'main image description',
   linkText: '',

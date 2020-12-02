@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    minHeight: '53em'
+    height: '53em'
   },
   overlay: {
     position: 'absolute',
@@ -34,30 +34,30 @@ const useStyles = makeStyles((theme) => ({
       paddingRight: 0,
     }
   },
-  bannerContent: {
-    paddingTop: '20em',
-    paddingLeft: '45%'
-  },
   title: {
-    paddingLeft: '15%',
-    opacity: 0.8,
+    opacity: 0.4,
     color: 'orange',
-    fontFamily: 'fantasy',
-    display: 'inline-block'
+    fontFamily: 'Texturina',
+    marginRight: '30px',
+    marginTop: '4em',
+    float: 'right',
+    right: 0
   },
   subTitle: {
-    paddingLeft: '30%',
-    opacity: 0.8,
+    opacity: 0.4,
     color: 'orange',
-    fontFamily: 'fantasy',
-    display: 'inline-block'
+    fontFamily: 'Texturina',
+    marginRight: '40px',
+    float: 'right',
+    right: 0
   },
   description: {
-    paddingTop: theme.spacing(3),
     color: 'white',
-    fontFamily: 'fantasy',
-    paddingLeft: '35%',
-    paddingRight: '5%'
+    fontFamily: 'Amatic SC',
+    marginRight: '20px',
+    marginBottom: '1em',
+    marginTop: '11em',
+    float: 'right'
   }
 }));
 
@@ -69,21 +69,28 @@ export default function MainFeaturedPost(props) {
     <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(${post.image})` }}>
       {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
       <div className={classes.overlay} />
-      <Grid container className={classes.bannerContent}>
-        <Grid item md={12}>
-          <div className={classes.mainFeaturedPostContent}>
-            <Typography className={classes.title} component='h1' variant='h2' color='inherit' gutterBottom>
+      <div className={classes.mainFeaturedPostContent}>
+        <Grid container xs className={classes.bannerContent}>
+          <Grid item md={12}>
+            <Typography className={classes.title} variant='h2' color='inherit' gutterBottom>
               {post.title}
             </Typography>
-            <Typography className={classes.subTitle} variant='h4' color='inherit' paragraph>
+          </Grid>
+        </Grid>
+        <Grid container>
+          <Grid item md={12}>
+            <Typography className={classes.subTitle} variant='h5' color='inherit' paragraph>
               {post.subTitle}
-            </Typography>
+            </Typography></Grid>
+        </Grid>
+        <Grid container>
+          <Grid item md={12}>
             <Typography className={classes.description} variant='h5' color='inherit' paragraph>
               {post.description}
             </Typography>
-          </div>
+          </Grid>
         </Grid>
-      </Grid>
+      </div>
     </Paper>
   );
 }
