@@ -14,7 +14,8 @@ const useStyle = makeStyles(theme => {
     },
     experiencesPaper: {
       backgroundColor: 'gray',
-      paddingTop: theme.spacing(2)
+      paddingTop: theme.spacing(2),
+      backgroundColor: 'darkseagreen'
     }
   }
 })
@@ -98,7 +99,7 @@ const Portfolio = (props) => {
 
   return (
     <React.Fragment>
-      <CssBaseline />
+      {/* <CssBaseline /> */}
       <Container maxWidth="lg">
         <main>
           <Banner post={props.bannerData} />

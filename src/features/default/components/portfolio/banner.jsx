@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'orange',
     fontFamily: 'Texturina',
     marginRight: '30px',
-    marginTop: '4em',
+    marginTop: '6em',
     float: 'right',
     right: 0
   },

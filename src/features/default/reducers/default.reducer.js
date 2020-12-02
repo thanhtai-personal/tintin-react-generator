@@ -10,7 +10,7 @@ import citynowLogo from 'root/assert/images/citynowLogo.jpg'
 import gameLoftLogo from 'root/assert/images/gameloftLogo.png'
 import fujinetLogo from 'root/assert/images/fujinetlogo.png'
 import natureScienceLogo from 'root/assert/images/hcmusLogo.png'
-import profileImageDefault from 'root/assert/images/profile-image-default.jpg'
+import profileImageDefault from 'root/assert/images/profileImage.jpeg'
 
 const initalState = {
   bannerData: {

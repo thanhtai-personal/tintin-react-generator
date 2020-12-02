@@ -6,7 +6,8 @@ import { Grid, Paper, Typography, Table, TableBody, TableRow, TableCell } from '
 const useStyles = makeStyles((theme) => ({
   profileSection: {
     marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3)
+    marginBottom: theme.spacing(3),
+    backgroundColor: 'beige'
   },
   imageProfile: {
     width: '250px',
