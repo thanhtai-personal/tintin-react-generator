@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { timelineItems as data, createTimelineItem } from '../timeline/util/util'
+import { createTimelineItem } from '../timeline/util/util'
 import Timeline from '../timeline/lib/timeline'
 import { CircularProgress, makeStyles, CssBaseline, Container } from '@material-ui/core'
 import { Spring, animated as a } from 'react-spring/renderprops'
-import bannerImage from 'root/assert/images/mini-profile-bg-01.jpg'
 import Banner from './banner'
 import Footer from './footer'
 
@@ -14,13 +13,6 @@ const useStyle = makeStyles(theme => {
     }
   }
 })
-
-const mainFeaturedPost = {
-  title: 'Trần Thanh Tài',
-  subTitle: 'ReactJS - Web developer',
-  description:'Hello someone, so very happy to have you here to visit my site.',
-  image: bannerImage,
-};
 
 const Portfolio = (props) => {
 
@@ -94,8 +86,8 @@ const Portfolio = (props) => {
 
   result.onchange = (event) => setIsDesktop(event.matches)
 
-  const timelineItems = Object.keys(data.TimelineItems).map((key, index) => {
-    return createTimelineItem(key, data.TimelineItems[key], index, isDesktop)
+  const timelineItems = props.experiences.map((experience, index) => {
+    return createTimelineItem(`${experience.key}-${index}`, experience, index, isDesktop)
   })
 
 
@@ -104,7 +96,7 @@ const Portfolio = (props) => {
       <CssBaseline />
       <Container maxWidth="lg">
         <main>
-          <Banner post={mainFeaturedPost} />
+          <Banner post={props.bannerData} />
           <Timeline
             title={'Experiences'}
             stackedImages={!isDesktop}

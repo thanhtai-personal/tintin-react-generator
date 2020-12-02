@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function MainFeaturedPost(props) {
+export default function Banner(props) {
   const classes = useStyles();
   const { post } = props;
 
@@ -70,7 +70,7 @@ export default function MainFeaturedPost(props) {
       {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
       <div className={classes.overlay} />
       <div className={classes.mainFeaturedPostContent}>
-        <Grid container xs className={classes.bannerContent}>
+        <Grid container className={classes.bannerContent}>
           <Grid item md={12}>
             <Typography className={classes.title} variant='h2' color='inherit' gutterBottom>
               {post.title}
@@ -95,6 +95,6 @@ export default function MainFeaturedPost(props) {
   );
 }
 
-MainFeaturedPost.propTypes = {
+Banner.propTypes = {
   post: PropTypes.object,
 };
