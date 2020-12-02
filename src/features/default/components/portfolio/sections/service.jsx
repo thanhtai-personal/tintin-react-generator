@@ -1,11 +1,6 @@
 import React from 'react'
 
-interface ServiceProp {
-  data: any,
-  text: any
-}
-
-const Service = (props: ServiceProp) => {
+const Service = (props) => {
   const { data } = props
   return (
     <div className='service_area' id='service'>

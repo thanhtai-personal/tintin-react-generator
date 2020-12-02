@@ -1,11 +1,7 @@
 import React from 'react'
 
-interface HobbiesProps {
-  text: any,
-  data: any
-}
 
-const Hobbies = (props: HobbiesProps) => {
+const Hobbies = (props) => {
   const { text, data: { hobbiesList = []} } = props
   return (
     <div className='hobbies_area' id='hobbies'>
@@ -22,7 +18,7 @@ const Hobbies = (props: HobbiesProps) => {
             <div className='about-extra'>
               <div className='about-extra-icon'>
                 <ul>
-                  {hobbiesList.map((hobbie: any, index: number) => (<li key={hobbie.key || index}>
+                  {hobbiesList.map((hobbie, index) => (<li key={hobbie.key || index}>
                     <p><i className={hobbie.icon}></i><br /><span>{hobbie.text}</span></p>
                   </li>))
                   }

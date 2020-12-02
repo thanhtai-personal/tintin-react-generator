@@ -39,7 +39,7 @@ export default function Profile(props) {
             </picture>}
           </Typography>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={6}>
           <Typography className={classes.sortDescription} align={'center'} >{
             profileData.sortDescription
           }</Typography>
@@ -55,6 +55,11 @@ export default function Profile(props) {
                 </TableRow>))}
               </TableBody>
           </Table>
+        </Grid>
+        <Grid item xs={2}>
+          <div className='download_cv' style={{ marginTop: '60px' }}>
+        <a className='boxed-btn3' href='https://drive.google.com/file/d/1gr_lrqIomuZ4MiKtXYq6Lfinbtnkef1i/view?usp=sharing' target='_blank' rel='noopener noreferrer'>{'Get my CV here'}</a>
+          </div>
         </Grid>
       </Grid>
     </Paper>
