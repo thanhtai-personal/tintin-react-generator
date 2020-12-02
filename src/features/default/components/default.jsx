@@ -2,13 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { defaultAction } from './../actions'
 import setupFeature from './../setup'
-import Blog from './demo/blog'
+import Portfolio from './portfolio'
 
 setupFeature()
 
 const HomeComponent = (props) => {
   return (
-   <Blog />
+   <Portfolio {...props} />
   )
 }
 
