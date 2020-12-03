@@ -1,9 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
-import Paper from '@material-ui/core/Paper'
-import Typography from '@material-ui/core/Typography'
-import Grid from '@material-ui/core/Grid'
+import { Paper, Typography, Grid, useMediaQuery } from '@material-ui/core'
 import bannerImage from 'root/assert/images/mini-profile-bg-01.jpg'
 
 const useStyles = makeStyles((theme) => ({
@@ -71,6 +69,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Banner(props) {
   const classes = useStyles()
+  const minWidth600 = useMediaQuery('(min-width: 600px)')
   const { post } = props
 
   return (
@@ -93,7 +92,7 @@ export default function Banner(props) {
               {post.subTitle}
             </Typography></Grid>
         </Grid>
-        <Grid container>
+        <Grid container style={minWidth600 ? {} : { display: 'none' }}>
           <Grid item md={12}>
             <Typography className={classes.description} variant='h5' color='inherit' paragraph>
               {post.description}

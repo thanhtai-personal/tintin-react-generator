@@ -115,7 +115,7 @@ const Portfolio = (props) => {
       <Container maxWidth="lg">
         <main>
           <Banner post={props.bannerData} />
-          <Grid container className={classes.profile}>
+          <Grid container className={classes.profile} style={isDesktop ? {} : { height: 'auto' }}>
             <Grid item xs={isDesktop ? 9 : 12}>
               <Profile profileData={props.profileData} />
             </Grid>
