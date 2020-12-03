@@ -1,21 +1,34 @@
 import React, { useState } from 'react'
 import { createTimelineItem } from '../timeline/util/util'
 import Timeline from '../timeline/lib/timeline'
-import { CircularProgress, makeStyles, CssBaseline, Container, Paper } from '@material-ui/core'
+import { CircularProgress, makeStyles, Container, Paper, Grid } from '@material-ui/core'
 import { Spring, animated as a } from 'react-spring/renderprops'
 import Banner from './banner'
 import Footer from './footer'
 import Profile from './profile'
+import Skills from './skills'
+import Hobbies from './hobbies'
 
 const useStyle = makeStyles(theme => {
-  return  {
-    BackRed: {
-      backgroundColor: 'blue',
-    },
+  return {
     experiencesPaper: {
-      backgroundColor: 'gray',
       paddingTop: theme.spacing(2),
-      backgroundColor: 'darkseagreen'
+      backgroundColor: 'beige',
+      marginTop: theme.spacing(5)
+    },
+    skills: {
+      backgroundColor: '#fff',
+      border: 'solid 1px',
+      // marginTop: theme.spacing(2),
+      position: 'relative',
+    },
+    profile: {
+      backgroundColor: 'beige',
+      maxHeight: '23em',
+      overflow: 'visible'
+    },
+    hobbies: {
+      backgroundColor: 'beige',
     }
   }
 })
@@ -99,27 +112,41 @@ const Portfolio = (props) => {
 
   return (
     <React.Fragment>
-      {/* <CssBaseline /> */}
       <Container maxWidth="lg">
         <main>
           <Banner post={props.bannerData} />
-          <Profile profileData={props.profileData}/>
-          <Paper className={classes.experiencesPaper}>
-            <Timeline
-              title={'Experiences'}
-              stackedImages={!isDesktop}
-              isLeft={isLeft}
-              isOneWay={!isDesktop}
-              wrapItem={wrapItem}>
-              {timelineItems.length > 0 ? timelineItems : (<CircularProgress style={
-                {
-                  alignSelf: 'center',
-                  background: this.props.theme.palette.background.default
-                }
-              } />)}
-            </Timeline>
-          </Paper>
-          
+          <Grid container className={classes.profile}>
+            <Grid item xs={isDesktop ? 9 : 12}>
+              <Profile profileData={props.profileData} />
+            </Grid>
+            <Grid item xs={3} style={isDesktop ? {} : { display: 'none' }}>
+              <Paper className={classes.skills}>
+                <Skills skills={props.skills} />
+              </Paper>
+            </Grid>
+          </Grid>
+          <Grid container>
+            <Grid item xs={12}>
+              <Paper className={classes.experiencesPaper}>
+                <Timeline
+                  title={'Experiences'}
+                  stackedImages={!isDesktop}
+                  isLeft={isLeft}
+                  isOneWay={!isDesktop}
+                  wrapItem={wrapItem}>
+                  {timelineItems.length > 0 ? timelineItems : (<CircularProgress style={
+                    {
+                      alignSelf: 'center',
+                      background: this.props.theme.palette.background.default
+                    }
+                  } />)}
+                </Timeline>
+              </Paper>
+            </Grid>
+            <Grid item xs={12} className={classes.hobbies}>
+              <Hobbies hobbies={props.hobbies} />
+            </Grid>
+          </Grid>
         </main>
       </Container>
       <Footer title='Thank you!' description='See you again!' />

@@ -11,6 +11,7 @@ import gameLoftLogo from 'root/assert/images/gameloftLogo.png'
 import fujinetLogo from 'root/assert/images/fujinetlogo.png'
 import natureScienceLogo from 'root/assert/images/hcmusLogo.png'
 import profileImageDefault from 'root/assert/images/profileImage.jpeg'
+import { iconKeys } from 'root/commonComponents/materialUIIcons'
 
 const initalState = {
   bannerData: {
@@ -171,83 +172,32 @@ const initalState = {
       percent: 50
     }
   ],
-  experiences: [
-    {
-      title: 'Now',
-      createdAt: new Date().toDateString(),
-      content: 'Titan Technology',
-      style: {
-        boxShadow: '0 0 6px 1px #BD3B36'
-      },
-      cardHeaderStyle: {
-        backgroundColor: 'lightblue'
-      }
-    },
-    {
-      title: 'TiTan Technology',
-      createdAt: '07/01/2019',
-      content: 'Fullstack developer with .Net Core and ReactJS'
-    },
-    {
-      title: 'KoLabs LLC',
-      createdAt: '01/04/2017',
-      content: 'Frontend developer with ReactJS'
-    },
-    {
-      title: 'CityNow Company',
-      createdAt: '01/10/2016',
-      content: 'FullStack developer with Scala and ReactJS'
-    },
-    {
-      title: 'Gameloft Company',
-      createdAt: '01/10/2015',
-      content: 'Game Fresher with Java/c++'
-    },
-    {
-      title: 'Fujinet Company',
-      createdAt: '01/07/2015',
-      content: 'Web intern with java'
-    },
-    {
-      title: 'Ho Chi Minh City University of Science',
-      createdAt: '02/09/2011',
-      content: 'Specialized in software engineering',
-      icon: <i className='fas fa-school'></i>,
-      cardHeaderStyle: {
-        backgroundColor: 'lightgreen'
-      }
-    }
-  ],
   hobbies: [
     {
       key: 'code',
-      icon: 'fa fa-code',
-      text: 'Code'
+      text: 'Code',
+      icon: iconKeys.code
     },
     {
       key: 'football',
-      icon: 'fas fa-futbol',
-      text: 'Football'
+      text: 'Football',
+      icon: iconKeys.soccer
     },
     {
       key: 'game',
-      icon: 'fab fa-steam',
-      text: 'Game'
+      text: 'Game',
+      icon: iconKeys.game
     },
     {
       key: 'music',
-      icon: 'fa fa-headphones',
-      text: 'Music'
-    },
-    {
-      key: 'girls',
-      icon: 'fa fa-female',
-      text: 'Girls and Girl'
+      text: 'Music',
+      icon: iconKeys.headSet
     },
     {
       key: 'money',
       icon: 'fas fa-money-bill-alt',
-      text: 'Money'
+      text: 'Money',
+      icon: iconKeys.money
     }
   ],
   experiences:

@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => {
 		},
 		title: {
 			width: '100%',
-			color: 'white'
+			color: 'black'
 		}
 	}
 })

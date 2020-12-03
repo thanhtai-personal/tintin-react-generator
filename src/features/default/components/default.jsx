@@ -15,7 +15,9 @@ const HomeComponent = (props) => {
 const mapState = (state) => ({
   experiences: state.default?.experiences,
   bannerData: state.default?.bannerData,
-  profileData: state.default?.profileData
+  profileData: state.default?.profileData,
+  skills: state.default?.skills,
+  hobbies: state.default?.hobbies
 })
 
 const mapDispatch = {

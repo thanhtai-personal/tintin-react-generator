@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
-import { Grid, Paper, Typography, Table, TableBody, TableRow, TableCell, Button } from '@material-ui/core'
+import { Grid, Paper, Typography, Table, TableBody, TableRow, TableCell, useMediaQuery } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
   profileSection: {
@@ -35,47 +35,37 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function Profile(props) {
+export default function Profile (props) {
   const classes = useStyles()
   const { profileData } = props
-
-  const handleGetCV = () => {
-    window.open('https://drive.google.com/file/d/1gr_lrqIomuZ4MiKtXYq6Lfinbtnkef1i/view?usp=sharing'
-      , '_blank'
-    )
-  }
+  const minWidth1100 = useMediaQuery('(min-width: 1100px)')
 
   return (
     <Paper className={classes.profileSection}>
       <Grid container>
-        <Grid item xs={4}>
+        <Grid item xs={4} style={minWidth1100 ? {} : { display: 'none' }}>
           <Typography align={'center'}>
             {<picture>
               <img className={classes.imageProfile} src={profileData.image} alt={profileData.imageText} />
             </picture>}
           </Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={minWidth1100 ? 8 : 12}>
           <Typography className={classes.sortDescription} >
             <span className={classes.firstcharacter}>I</span> {profileData.sortDescription}
           </Typography>
           <Table className={classes.profileInformation}>
-              <TableBody>
-                {profileData.informations.map((info, index) => (<TableRow key={`${info.key}-${index}`}>
-                  <TableCell>
-                    {info.name}
-                  </TableCell>
-                  <TableCell>
-                    {info.value}
-                  </TableCell>
-                </TableRow>))}
-              </TableBody>
+            <TableBody>
+              {profileData.informations.map((info, index) => (<TableRow key={`${info.key}-${index}`}>
+                <TableCell>
+                  {info.name}
+                </TableCell>
+                <TableCell>
+                  {info.value}
+                </TableCell>
+              </TableRow>))}
+            </TableBody>
           </Table>
-        </Grid>
-        <Grid item xs={2}>
-          <Button variant='contained' ocClick={handleGetCV}>
-            Get my CV here
-          </Button>
         </Grid>
       </Grid>
     </Paper>
