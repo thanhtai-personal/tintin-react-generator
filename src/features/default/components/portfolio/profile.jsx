@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
-import { Grid, Paper, Typography, Table, TableBody, TableRow, TableCell } from '@material-ui/core'
+import { Grid, Paper, Typography, Table, TableBody, TableRow, TableCell, Button } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
   profileSection: {
@@ -22,12 +22,28 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'gray',
     paddingRight: theme.spacing(1),
     paddingLeft: theme.spacing(1)
+  },
+  firstcharacter: {
+    color: '#2c3d4f',
+    float: 'left',
+    fontFamily: 'Georgia',
+    fontSize: '3em',
+    lineHeight: '1em',
+    paddingTop: '0px',
+    paddingRight: '8px',
+    paddingLeft: '3px',
   }
 }))
 
 export default function Profile(props) {
   const classes = useStyles()
   const { profileData } = props
+
+  const handleGetCV = () => {
+    window.open('https://drive.google.com/file/d/1gr_lrqIomuZ4MiKtXYq6Lfinbtnkef1i/view?usp=sharing'
+      , '_blank'
+    )
+  }
 
   return (
     <Paper className={classes.profileSection}>
@@ -40,9 +56,9 @@ export default function Profile(props) {
           </Typography>
         </Grid>
         <Grid item xs={6}>
-          <Typography className={classes.sortDescription} align={'center'} >{
-            profileData.sortDescription
-          }</Typography>
+          <Typography className={classes.sortDescription} >
+            <span className={classes.firstcharacter}>I</span> {profileData.sortDescription}
+          </Typography>
           <Table className={classes.profileInformation}>
               <TableBody>
                 {profileData.informations.map((info, index) => (<TableRow key={`${info.key}-${index}`}>
@@ -57,9 +73,9 @@ export default function Profile(props) {
           </Table>
         </Grid>
         <Grid item xs={2}>
-          <div className='download_cv' style={{ marginTop: '60px' }}>
-        <a className='boxed-btn3' href='https://drive.google.com/file/d/1gr_lrqIomuZ4MiKtXYq6Lfinbtnkef1i/view?usp=sharing' target='_blank' rel='noopener noreferrer'>{'Get my CV here'}</a>
-          </div>
+          <Button variant='contained' ocClick={handleGetCV}>
+            Get my CV here
+          </Button>
         </Grid>
       </Grid>
     </Paper>
