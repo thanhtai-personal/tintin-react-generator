@@ -16,6 +16,19 @@ const makeSingleton = (makeInstantFunc, dataInit) => {
     })()
 }
 
+export const isElementInViewport = (el) => {
+    const rect = el.getBoundingClientRect()
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight
+    const windowWidth = window.innerWidth || document.documentElement.clientWidth
+    const rectBottom = rect.top + rect.height, rectRight = rect.left + rect.width
+    const isVerticalInView = (rect.top > 0 && rect.top <= windowHeight)
+        || (rect.top < 0 && rectBottom > 0)
+    const isHorizonalInView = (rect.left > 0 && rect.left < windowWidth)
+        || (rect.left < 0 && rectRight > 0)
+    return (isVerticalInView && isHorizonalInView)
+}
+
+// eslint-disable-next-line
 export default {
     ...actionHelpers
     , makeSingleton

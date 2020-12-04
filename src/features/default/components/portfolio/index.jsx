@@ -1,21 +1,15 @@
-import React, { useState } from 'react'
-import { createTimelineItem } from '../timeline/util/util'
-import Timeline from '../timeline/lib/timeline'
-import { CircularProgress, makeStyles, Container, Paper, Grid } from '@material-ui/core'
-import { Spring, animated as a } from 'react-spring/renderprops'
-import Banner from './banner'
+import React from 'react'
+import { makeStyles, Container, Paper, Grid, useMediaQuery } from '@material-ui/core'
+import { useLazyLoadSection } from 'root/utils/renderHelper'
+import BannerComponent from './banner'
 import Footer from './footer'
-import Profile from './profile'
-import Skills from './skills'
-import Hobbies from './hobbies'
+import ProfileComponent from './profile'
+import SkillsComponent from './skills'
+import HobbiesComponent from './hobbies'
+import ExperiencesComponent from './experiences'
 
 const useStyle = makeStyles(theme => {
   return {
-    experiencesPaper: {
-      paddingTop: theme.spacing(2),
-      backgroundColor: 'beige',
-      marginTop: theme.spacing(5)
-    },
     skills: {
       backgroundColor: '#fff',
       border: 'solid 1px',
@@ -34,85 +28,19 @@ const useStyle = makeStyles(theme => {
 })
 
 const Portfolio = (props) => {
-
+  
+  const Banner = useLazyLoadSection(BannerComponent, { height: '1188px', elementId: 'banner' })
+  const Profile = useLazyLoadSection(ProfileComponent, { height: '340px', elementId: 'profile' })
+  const Skills = useLazyLoadSection(SkillsComponent, { height: '340px', elementId: 'skills' })
+  const Hobbies = useLazyLoadSection(HobbiesComponent, { height: '152px', elementId: 'hobbies' })
+  const Experiences = useLazyLoadSection(ExperiencesComponent, { height: '1407px', elementId: 'experiences' })
+  
+  const isDesktop = useMediaQuery('(min-width: 800px)')
   const classes = useStyle(props)
-
-  const result = window.matchMedia('(min-width: 800px)')
-  const [isDesktop, setIsDesktop] = useState(result.matches)
-
-  //function to decide where the element should be placed
-  const isLeft = (item, index) => {
-    return index % 2 === 0
-  }
-
-  //function to wrap the TimelineItem with another element if needed
-  const wrapItem = (item, index) => {
-    const isEven = index % 2 === 0
-    const animationPropsLeftFrom = {
-      opacity: -1,
-      left: -100,
-      position: 'relative'
-    }
-    const animationPropsRightFrom = {
-      opacity: -1,
-      right: -100,
-      position: 'relative'
-    }
-    const animationPropsLeftTo = {
-      opacity: 1,
-      left: 0,
-      position: 'relative'
-    }
-    const animationPropsRightTo = {
-      opacity: 1,
-      right: 0,
-      position: 'relative'
-
-    }
-
-    const animatedItem = isDesktop ? (
-      <Spring delay={index * 200} from={isEven ?
-        {
-          ...animationPropsLeftFrom
-        } :
-        {
-          ...animationPropsRightFrom
-        }}
-
-        to={isEven ?
-          {
-            ...animationPropsLeftTo
-          } :
-          {
-            ...animationPropsRightTo
-          }}>
-        {animProps => (<a.div style={animProps}>{item}</a.div>)}
-      </Spring>
-    ) : (
-        <Spring delay={index * 200} from={{
-          ...animationPropsRightFrom
-        }}
-
-          to={{
-            ...animationPropsRightTo
-          }}>
-          {animProps => (<a.div style={animProps}>{item}</a.div>)}
-        </Spring>
-      )
-
-    return animatedItem
-  }
-
-  result.onchange = (event) => setIsDesktop(event.matches)
-
-  const timelineItems = props.experiences.map((experience, index) => {
-    return createTimelineItem(`${experience.key}-${index}`, experience, index, isDesktop)
-  })
-
 
   return (
     <React.Fragment>
-      <Container maxWidth="lg">
+      <Container maxWidth='lg'>
         <main>
           <Banner post={props.bannerData} />
           <Grid container className={classes.profile} style={isDesktop ? {} : { height: 'auto' }}>
@@ -127,21 +55,7 @@ const Portfolio = (props) => {
           </Grid>
           <Grid container>
             <Grid item xs={12}>
-              <Paper className={classes.experiencesPaper}>
-                <Timeline
-                  title={'Experiences'}
-                  stackedImages={!isDesktop}
-                  isLeft={isLeft}
-                  isOneWay={!isDesktop}
-                  wrapItem={wrapItem}>
-                  {timelineItems.length > 0 ? timelineItems : (<CircularProgress style={
-                    {
-                      alignSelf: 'center',
-                      background: this.props.theme.palette.background.default
-                    }
-                  } />)}
-                </Timeline>
-              </Paper>
+              <Experiences experiences={props.experiences} />
             </Grid>
             <Grid item xs={12} className={classes.hobbies}>
               <Hobbies hobbies={props.hobbies} />
