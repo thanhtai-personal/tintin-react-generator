@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Paper, Typography, Table, TableBody, TableRow, TableCell, useMediaQuery } from '@material-ui/core'
@@ -35,10 +35,18 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function Profile (props) {
+export default function Profile(props) {
   const classes = useStyles()
   const { profileData } = props
   const minWidth1100 = useMediaQuery('(min-width: 1100px)')
+  const profileDataElements = useMemo(() => profileData.informations.map((info, index) => (<TableRow key={`${info.key}-${index}`}>
+    <TableCell>
+      {info.name}
+    </TableCell>
+    <TableCell>
+      {info.value}
+    </TableCell>
+  </TableRow>)), [profileData])
 
   return (
     <Paper className={classes.profileSection}>
@@ -56,14 +64,7 @@ export default function Profile (props) {
           </Typography>
           <Table className={classes.profileInformation}>
             <TableBody>
-              {profileData.informations.map((info, index) => (<TableRow key={`${info.key}-${index}`}>
-                <TableCell>
-                  {info.name}
-                </TableCell>
-                <TableCell>
-                  {info.value}
-                </TableCell>
-              </TableRow>))}
+              {profileDataElements}
             </TableBody>
           </Table>
         </Grid>

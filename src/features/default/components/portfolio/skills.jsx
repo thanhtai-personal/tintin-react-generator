@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Typography, makeStyles, Grid } from '@material-ui/core'
 
 const useStyle = makeStyles((theme) => {
@@ -35,16 +35,19 @@ const useStyle = makeStyles((theme) => {
 const Skills = (props) => {
   const classes = useStyle()
   const { skills } = props
+  const skillElements = useMemo(() => skills?.map((skill, index) => (
+    <Grid className={classes.skill} item xs={12} key={`${skill.name}-${index}`}>
+      <Typography style={skill.isNote ? { color: 'red' } : {}}>{skill.name}: </Typography>
+      <Typography className={classes.skillPercent}>{skill.percent}%</Typography>
+      <div className={classes.progressBar}>
+        <div className={classes.contentPercent} style={{ width: `${skill.percent}%` }}></div>
+      </div>
+    </Grid>))
+    // eslint-disable-next-line
+    , [skills])
   return (<div className={classes.skills}>
     <Typography className={classes.title} variant={'h5'} align={'center'} >{'Skills'}</Typography>
-    {skills?.map((skill, index) => (
-      <Grid className={classes.skill} item xs={12} key={`${skill.name}-${index}`}>
-        <Typography style={skill.isNote ? { color: 'red' } : {}}>{skill.name}: </Typography>
-        <Typography className={classes.skillPercent}>{skill.percent}%</Typography>
-        <div className={classes.progressBar}>
-          <div className={classes.contentPercent} style={{ width: `${skill.percent}%` }}></div>
-        </div>
-      </Grid>))}
+    {skillElements}
   </div>)
 }
 

@@ -195,7 +195,6 @@ const initalState = {
     },
     {
       key: 'money',
-      icon: 'fas fa-money-bill-alt',
       text: 'Money',
       icon: iconKeys.money
     }

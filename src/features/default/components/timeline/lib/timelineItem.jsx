@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { Card, Grid, CardMedia, CardContent, Box, Paper, makeStyles, Divider, Collapse, CardActions, IconButton } from '@material-ui/core'
@@ -28,7 +28,7 @@ export const useStyles = makeStyles(theme => {
 			flexDirection: 'row',
 			marginTop: theme.spacing(2),
 			direction: 'ltr',
-			marginLeft: (props) => !props.isOneWay ? '6em' : '0',
+			marginLeft: (props) => !props.isOneWay ? '6em' : '1em',
 			'&::before': {
 				content: '',
 				width: 0,
@@ -48,7 +48,7 @@ export const useStyles = makeStyles(theme => {
 			flexDirection: 'row-reverse',
 			marginTop: theme.spacing(2),
 			direction: 'ltr',
-			marginRight: (props) => !props.isOneWay ? '6em' : '0',
+			marginRight: (props) => !props.isOneWay ? '6em' : '1em',
 			'&::before': {
 				content: '',
 				width: 0,
@@ -118,9 +118,9 @@ const TimelineItem = props => {
 
 	const [expanded, setExpanded] = useState(false)
 
-	const handleExpandClick = () => {
+	const handleExpandClick = useCallback(() => {
 		setExpanded(!expanded)
-	}
+	})
 
 	const classes = useStyles(props)
 

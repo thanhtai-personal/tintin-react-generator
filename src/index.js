@@ -1,4 +1,5 @@
-import React, { StrictMode } from 'react'
+import React from 'react'
+// import React, { StrictMode } from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
@@ -12,13 +13,13 @@ const NODE_MOUNT = document.getElementById('root')
 
 const renderApp = () =>
   render(
-    <StrictMode>
+    // <StrictMode>
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <AppRoute />
         </ConnectedRouter>
-      </Provider>
-    </StrictMode>,
+      </Provider>,
+    // </StrictMode>,
     NODE_MOUNT
   )
 

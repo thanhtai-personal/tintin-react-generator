@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import { makeStyles, Paper, CircularProgress } from '@material-ui/core'
 import { createTimelineItem } from '../timeline/util/util'
 import { Spring, animated as a } from 'react-spring/renderprops'
@@ -81,7 +81,7 @@ const Experiences = (props) => {
     return animatedItem
   }
 
-  result.onchange = (event) => setIsDesktop(event.matches)
+  result.onchange = useCallback((event) => setIsDesktop(event.matches))
 
   const timelineItems = props.experiences.map((experience, index) => {
     return createTimelineItem(`${experience.key}-${index}`, experience, index, isDesktop)

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { isElementInViewport } from 'root/utils'
+import { Zoom } from '@material-ui/core'
+
 
 export const useLazyLoadSection = (WrappedComponent, { elementId, width = '100%', height = '200px' }) => {
     const LazyLoadComponent = (props) => {
@@ -7,7 +9,9 @@ export const useLazyLoadSection = (WrappedComponent, { elementId, width = '100%'
         const handleScroll = () => {
             const sectionElement = document.getElementById(elementId)
             if (!isLoaded && sectionElement && isElementInViewport(sectionElement)) {
-                setIsLoaded(true)
+                setTimeout(() => {
+                    setIsLoaded(true)
+                }, 200)
             }
         }
 
@@ -17,7 +21,9 @@ export const useLazyLoadSection = (WrappedComponent, { elementId, width = '100%'
             return () => { window.removeEventListener('scroll', handleScroll) }
         // eslint-disable-next-line
         }, [])
-        return isLoaded ? <WrappedComponent {...props}/> 
+        return isLoaded ? <Zoom in={isLoaded} timeout={{ enter: 200, appear: 500 }}>
+                <WrappedComponent {...props}/>
+            </Zoom> 
             : <div id={elementId} style={{
                 width, height, backgroundColor: 'white'
             }}></div>
