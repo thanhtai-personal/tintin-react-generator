@@ -81,6 +81,7 @@ const Experiences = (props) => {
     return animatedItem
   }
 
+  // eslint-disable-next-line
   result.onchange = useCallback((event) => setIsDesktop(event.matches))
 
   const timelineItems = props.experiences.map((experience, index) => {

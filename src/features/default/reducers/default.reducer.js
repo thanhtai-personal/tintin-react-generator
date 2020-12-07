@@ -131,7 +131,7 @@ const initalState = {
     },
     {
       name: 'HTML/CSS/Jquery',
-      percent: 90,
+      percent: 80,
       isNote: true
     },
     {
@@ -144,20 +144,11 @@ const initalState = {
     },
     {
       name: 'PostgresSQL',
-      percent: 60
-    },
-    {
-      name: 'Jira',
       percent: 70
     },
     {
-      name: 'Trello',
-      percent: 70
-    },
-    {
-      name: 'Git',
-      percent: 90,
-      isNote: true
+      name: 'SQLServer',
+      percent: 50
     },
     {
       name: 'Heroku',
@@ -165,10 +156,6 @@ const initalState = {
     },
     {
       name: 'AWS',
-      percent: 50
-    },
-    {
-      name: 'Docker',
       percent: 50
     }
   ],
