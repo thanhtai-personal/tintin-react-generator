@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import TimelineItem from '../lib/timelineItem'
-import { Typography, Chip } from '@material-ui/core'
+import { Typography, Chip, CircularProgress } from '@material-ui/core'
 
 export const createTimelineItem = (key, item, index, isDesktop) => {
 
@@ -58,3 +58,5 @@ export const createTimelineItem = (key, item, index, isDesktop) => {
     return timelineItem
 
 }
+
+export const makeSuspenseComponent = (component) => (<Suspense fallback={<CircularProgress />}>{component}</Suspense>)

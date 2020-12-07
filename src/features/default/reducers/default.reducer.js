@@ -46,6 +46,30 @@ const initalState = {
         key: 'address',
         name: 'Address',
         value: 'Tan Thoi Hiep, 12 district, Ho Chi Minh city, Viet Nam'
+      },
+      {
+        key: 'site',
+        name: 'Site',
+        value: 'https://tttgalaxy.co.uk',
+        type: 'link'
+      },
+      {
+        key: 'LinkedIn',
+        name: 'Site',
+        value: 'https://www.linkedin.com/in/tran-thanh-tai-539250129/',
+        type: 'link'
+      },
+      {
+        key: 'git',
+        name: 'Github',
+        value: 'https://github.com/thanhtai-personal',
+        type: 'link'
+      },
+      {
+        key: 'npm',
+        name: 'NPM',
+        value: 'https://www.npmjs.com/~demonking',
+        type: 'link'
       }
     ]
   },

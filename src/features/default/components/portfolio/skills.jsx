@@ -5,12 +5,16 @@ const useStyle = makeStyles((theme) => {
   return {
     skills: {
       paddingTop: theme.spacing(1),
-      paddingBottom: theme.spacing(1)
+      paddingBottom: theme.spacing(1),
+      zIndex: 99
     },
     skill: {
       paddingTop: theme.spacing(1),
       paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2)
+      paddingRight: theme.spacing(2),
+      '&:hover': {
+        backgroundColor: 'beige'
+      }
     },
     progressBar: {
       height: '5px',

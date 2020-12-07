@@ -44,7 +44,7 @@ export default function Profile(props) {
       {info.name}
     </TableCell>
     <TableCell>
-      {info.value}
+      {info.type === 'link' ? <a href={info.value}>{info.value}</a> : info.value}
     </TableCell>
   </TableRow>)), [profileData])
 

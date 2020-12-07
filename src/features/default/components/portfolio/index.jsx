@@ -13,12 +13,11 @@ const useStyle = makeStyles(theme => {
     skills: {
       backgroundColor: '#fff',
       border: 'solid 1px',
-      // marginTop: theme.spacing(2),
+      marginTop: theme.spacing(5),
       position: 'relative',
     },
     profile: {
       backgroundColor: 'beige',
-      maxHeight: '23em',
       overflow: 'visible'
     },
     hobbies: {
