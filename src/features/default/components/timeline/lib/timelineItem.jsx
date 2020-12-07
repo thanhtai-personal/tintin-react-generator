@@ -19,6 +19,9 @@ export const useStyles = makeStyles(theme => {
 		},
 		TimelineCard: {
 			marginLeft: '-1em',
+			'&:hover': {
+				backgroundColor: 'yellow'
+			}
 		},
 		TimelineCardContent: {
 			paddingTop: props => props.padTop ? '8px' : null
@@ -75,6 +78,9 @@ export const useStyles = makeStyles(theme => {
 			padding: 16,
 			backgroundColor: props => props.yearBackgroundColor,
 			color: props => props.yearColor,
+			'&:hover': {
+				color: 'yellow'
+			}
 		},
 		timelineItemHeader: {
 			padding: theme.spacing(1),
@@ -118,6 +124,7 @@ const TimelineItem = props => {
 
 	const [expanded, setExpanded] = useState(false)
 
+	//eslint-disable-next-line
 	const handleExpandClick = useCallback(() => {
 		setExpanded(!expanded)
 	})

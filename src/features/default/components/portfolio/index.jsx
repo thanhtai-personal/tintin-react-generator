@@ -27,13 +27,13 @@ const useStyle = makeStyles(theme => {
 })
 
 const Portfolio = (props) => {
-  
+
   const Banner = useLazyLoadSection(BannerComponent, { height: '1188px', elementId: 'banner' })
   const Profile = useLazyLoadSection(ProfileComponent, { height: '340px', elementId: 'profile' })
   const Skills = useLazyLoadSection(SkillsComponent, { height: '340px', elementId: 'skills' })
   const Hobbies = useLazyLoadSection(HobbiesComponent, { height: '152px', elementId: 'hobbies' })
   const Experiences = useLazyLoadSection(ExperiencesComponent, { height: '1407px', elementId: 'experiences' })
-  
+
   const isDesktop = useMediaQuery('(min-width: 800px)')
   const classes = useStyle(props)
 

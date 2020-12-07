@@ -17,7 +17,7 @@ const initalState = {
   bannerData: {
     title: 'Trần Thanh Tài',
     subTitle: 'ReactJS - Web developer',
-    description:'Hello someone, so very happy to have you here to visit my site.',
+    description: 'Hello someone, so very happy to have you here to visit my site.',
     image: bannerImage,
   },
   profileData: {

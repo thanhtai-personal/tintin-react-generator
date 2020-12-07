@@ -15,7 +15,6 @@ const useStyles = makeStyles(theme => {
 			position: 'relative', /* so that pseudoelements are positioned relatively to their 'li's*/
 			/* use padding-bottom instead of margin-bottom.*/
 			marginBottom: '0', /* This overrides previously specified margin-bottom */
-
 		},
 		leftDirection: {
 			direction: 'ltr'
@@ -84,7 +83,6 @@ const Timeline = (props) => {
 			}
 
 			const newProps = generateNewProps(props, isLeft ? directions.RIGHT : directions.LEFT)
-
 			processedItem = (
 				<li className={isLeft ?
 					[classes.leftDirection, classes.TimelineElement].join(' ') :
@@ -107,9 +105,7 @@ const Timeline = (props) => {
 			else {
 				direction = props.side
 			}
-
 			const newProps = generateNewProps(props, direction)
-
 			processedItem = (
 				<li className={direction === directions.LEFT ? [classes.leftDirection, classes.TimelineElement].join(' ')
 					: [classes.rightDirection, classes.TimelineElement].join(' ')}>
@@ -120,10 +116,12 @@ const Timeline = (props) => {
 
 		return props.wrapItem ? props.wrapItem(processedItem, index) : processedItem
 	})
-
 	return (
 		<>
 			<Typography variant={'h5'} className={classes.title} align='center'> 
+				{title}
+			</Typography>
+			<Typography className={classes.switch}> 
 				{title}
 			</Typography>
 			<ul {...htmlProps} className={[classes.Timeline, props.className].join(' ')}>

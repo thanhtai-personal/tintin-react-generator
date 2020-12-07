@@ -32,6 +32,11 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: '0px',
     paddingRight: '8px',
     paddingLeft: '3px',
+  },
+  profileItem: {
+    '&:hover': {
+      backgroundColor: 'white'
+    }
   }
 }))
 
@@ -39,14 +44,17 @@ export default function Profile(props) {
   const classes = useStyles()
   const { profileData } = props
   const minWidth1100 = useMediaQuery('(min-width: 1100px)')
-  const profileDataElements = useMemo(() => profileData.informations.map((info, index) => (<TableRow key={`${info.key}-${index}`}>
-    <TableCell>
-      {info.name}
-    </TableCell>
-    <TableCell>
-      {info.type === 'link' ? <a href={info.value}>{info.value}</a> : info.value}
-    </TableCell>
-  </TableRow>)), [profileData])
+  const profileDataElements = useMemo(() => profileData.informations.map((info, index) => (
+    <TableRow key={`${info.key}-${index}`} className={classes.profileItem}>
+      <TableCell>
+        {info.name}
+      </TableCell>
+      <TableCell>
+        {info.type === 'link' ? <a href={info.value}>{info.value}</a> : info.value}
+      </TableCell>
+    </TableRow>))
+    //eslint-disable-next-line
+    , [profileData])
 
   return (
     <Paper className={classes.profileSection}>
