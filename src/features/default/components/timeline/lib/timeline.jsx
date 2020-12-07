@@ -121,9 +121,6 @@ const Timeline = (props) => {
 			<Typography variant={'h5'} className={classes.title} align='center'> 
 				{title}
 			</Typography>
-			<Typography className={classes.switch}> 
-				{title}
-			</Typography>
 			<ul {...htmlProps} className={[classes.Timeline, props.className].join(' ')}>
 				{processedItems}
 			</ul>
