@@ -176,6 +176,11 @@ const initalState = {
       icon: iconKeys.game
     },
     {
+      key: 'history',
+      text: 'History',
+      icon: iconKeys.history
+    },
+    {
       key: 'music',
       text: 'Music',
       icon: iconKeys.headSet

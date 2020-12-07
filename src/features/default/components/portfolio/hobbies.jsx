@@ -8,6 +8,11 @@ const useStyle = makeStyles((theme) => {
       paddingTop: theme.spacing(2),
       paddingBottom: theme.spacing(2),
       marginBottom: theme.spacing(3)
+    },
+    hobbyItem: {
+      '&:hover': {
+        backgroundColor: 'yellow'
+      }
     }
   }
 })
@@ -17,10 +22,11 @@ const Hobbies = (props) => {
   const { hobbies = [] } = props
   const hobbiesElement = useMemo(() => hobbies.map((hobbie, index) => {
     let xsNumber = parseInt(12 / hobbies.length) || 1
-    return (<Grid key={`${hobbie.key}-${index}`} item xs={xsNumber}>
+    return (<Grid key={`${hobbie.key}-${index}`} item xs={xsNumber} className={classes.hobbyItem}>
       <Typography align={'center'}>{getIconByKey(hobbie.icon)}</Typography>
       <Typography align={'center'}>{hobbie.text}</Typography>
     </Grid>)
+    //eslint-disable-next-line
     }), [hobbies])
   return (
     <Grid container className={classes.hoobies}>

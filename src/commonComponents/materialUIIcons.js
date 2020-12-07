@@ -4,7 +4,8 @@ import {
   SportsEsports,
   MusicNote,
   MonetizationOn,
-  Headset
+  Headset,
+  History
 } from '@material-ui/icons'
 
 export const iconKeys = {
@@ -13,7 +14,8 @@ export const iconKeys = {
   game: 'game',
   music: 'music',
   money: 'money',
-  headSet: 'headSet'
+  headSet: 'headSet',
+  history: 'history'
 }
 
 const MaterialUIIcons = {
@@ -22,6 +24,7 @@ const MaterialUIIcons = {
   [iconKeys.game]: <SportsEsports />,
   [iconKeys.music]: <MusicNote />,
   [iconKeys.money]: <MonetizationOn />,
+  [iconKeys.history]: <History />,
   [iconKeys.headSet]: <Headset />
 }
 
