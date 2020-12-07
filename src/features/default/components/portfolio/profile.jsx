@@ -50,7 +50,7 @@ export default function Profile(props) {
         {info.name}
       </TableCell>
       <TableCell>
-        {info.type === 'link' ? <a href={info.value}>{info.value}</a> : info.value}
+        {info.type === 'link' ? <a rel='noreferrer' target='_blank' href={info.value}>{info.value}</a> : info.value}
       </TableCell>
     </TableRow>))
     //eslint-disable-next-line
