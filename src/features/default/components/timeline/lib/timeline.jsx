@@ -58,14 +58,6 @@ const Timeline = (props) => {
 	processExternalStyles(props)
 
 	const {
-		// eslint-disable-next-line
-		isOneWay,
-		// eslint-disable-next-line
-		wrapItem,
-		// eslint-disable-next-line
-		isLeft,
-		// eslint-disable-next-line
-		stackedImages,
 		title,
 		htmlProps
 	} = props

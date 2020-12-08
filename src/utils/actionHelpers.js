@@ -6,7 +6,8 @@ const makeSagasActionType =  (actionType) => {
   }
 }
 
-// eslint-disable-next-line
-export default {
+const actionHelper = {
   makeSagasActionType
 }
+
+export default actionHelper

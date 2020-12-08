@@ -28,8 +28,9 @@ export const isElementInViewport = (el) => {
     return (isVerticalInView && isHorizonalInView)
 }
 
-// eslint-disable-next-line
-export default {
+const utils = {
     ...actionHelpers
     , makeSingleton
 }
+
+export default utils

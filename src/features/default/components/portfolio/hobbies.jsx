@@ -26,8 +26,7 @@ const Hobbies = (props) => {
       <Typography align={'center'}>{getIconByKey(hobbie.icon)}</Typography>
       <Typography align={'center'}>{hobbie.text}</Typography>
     </Grid>)
-    //eslint-disable-next-line
-    }), [hobbies])
+    }), [hobbies, classes])
   return (
     <Grid container className={classes.hoobies}>
       <Grid item xs={12}>

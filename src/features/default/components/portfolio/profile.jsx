@@ -53,8 +53,7 @@ export default function Profile(props) {
         {info.type === 'link' ? <a rel='noreferrer' target='_blank' href={info.value}>{info.value}</a> : info.value}
       </TableCell>
     </TableRow>))
-    //eslint-disable-next-line
-    , [profileData])
+    , [profileData, classes])
 
   return (
     <Paper className={classes.profileSection}>

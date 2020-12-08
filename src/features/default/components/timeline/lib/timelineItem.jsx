@@ -124,38 +124,13 @@ const TimelineItem = props => {
 
 	const [expanded, setExpanded] = useState(false)
 
-	//eslint-disable-next-line
 	const handleExpandClick = useCallback(() => {
 		setExpanded(!expanded)
-	})
+	}, [expanded])
 
 	const classes = useStyles(props)
 
 	const {
-		// eslint-disable-next-line
-		yearBackgroundColor,
-		// eslint-disable-next-line
-		yearColor,
-		// eslint-disable-next-line
-		iconContent,
-		// eslint-disable-next-line
-		cardHeaderChildren,
-		// eslint-disable-next-line
-		cardContentChildren,
-		// eslint-disable-next-line
-		cardMediaProps,
-		// eslint-disable-next-line
-		expandableCardContent,
-		// eslint-disable-next-line
-		titleChildren,
-		// eslint-disable-next-line
-		padTop,
-		// eslint-disable-next-line
-		timelineItemWidth,
-		// eslint-disable-next-line
-		hasDivider,
-		// eslint-disable-next-line
-		customLine,
 		htmlProps
 	} = props
 

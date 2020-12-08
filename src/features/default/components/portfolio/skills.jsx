@@ -47,8 +47,7 @@ const Skills = (props) => {
         <div className={classes.contentPercent} style={{ width: `${skill.percent}%` }}></div>
       </div>
     </Grid>))
-    // eslint-disable-next-line
-    , [skills])
+    , [skills, classes])
   return (<div className={classes.skills}>
     <Typography className={classes.title} variant={'h5'} align={'center'} >{'Skills'}</Typography>
     {skillElements}
