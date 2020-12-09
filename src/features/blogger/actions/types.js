@@ -1,0 +1,1 @@
+export const BLOGGER_ACTION = 'blogger-action'

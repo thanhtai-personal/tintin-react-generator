@@ -6,6 +6,8 @@ const makeSagasActionType =  (actionType) => {
   }
 }
 
+export const ADD_NEW_FEATURE = 'add-new-feature'
+
 const actionHelper = {
   makeSagasActionType
 }
