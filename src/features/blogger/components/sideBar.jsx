@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Paper, Typography, Link } from '@material-ui/core'
 import AdSense from 'react-adsense'
+import { useLazyLoadSection } from 'root/utils/renderHelper'
 
 const useStyles = makeStyles((theme) => ({
   sidebarAboutBox: {
@@ -18,6 +19,7 @@ export default function Sidebar(props) {
   const classes = useStyles()
   const { archives, description, social, title } = props
 
+  const LazyLoadedGGAdsense = useLazyLoadSection(AdSense.Google, { elementId: 'google-adsense-2', height: '700px'  })
   return (
     <Grid item xs={12} md={4}>
       <Paper elevation={0} className={classes.sidebarAboutBox}>
@@ -34,7 +36,7 @@ export default function Sidebar(props) {
           {archive.title}
         </Link>
       ))}
-      <AdSense.Google
+      <LazyLoadedGGAdsense
         client='ca-pub-1815769508579401'
         slot='7806394673'
         style={{ display: 'block' }}

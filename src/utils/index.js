@@ -1,4 +1,6 @@
+import React, { Suspense } from 'react'
 import actionHelpers from './actionHelpers'
+import { CircularProgress } from '@material-ui/core'
 
 const makeSingleton = (makeInstantFunc, dataInit) => {
     return (function () {
@@ -27,6 +29,8 @@ export const isElementInViewport = (el) => {
         || (rect.left < 0 && rectRight > 0)
     return (isVerticalInView && isHorizonalInView)
 }
+
+export const makeSuspenseComponent = (component) => (<Suspense fallback={<CircularProgress />}>{component}</Suspense>)
 
 const utils = {
     ...actionHelpers

@@ -9,7 +9,7 @@ import { GitHub, LinkedIn, Person } from '@material-ui/icons'
 const initalState = {
   sections: [
     { title: 'ReactJS', url: '/blogger?query=reactjs' },
-    { title: 'HTML/Css', url: '/blogger?query=htmlcss' },
+    { title: 'HTML/CSS', url: '/blogger?query=htmlcss' },
     { title: 'Games', url: '/blogger?query=game' },
     { title: 'Travel', url: '/blogger?query=travel' },
     { title: 'Novals', url: '/blogger?query=novals' },
