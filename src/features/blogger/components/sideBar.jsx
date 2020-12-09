@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Paper, Typography, Link } from '@material-ui/core'
+import AdSense from 'react-adsense'
 
 const useStyles = makeStyles((theme) => ({
   sidebarAboutBox: {
@@ -33,6 +34,13 @@ export default function Sidebar(props) {
           {archive.title}
         </Link>
       ))}
+      <AdSense.Google
+        client='ca-pub-1815769508579401'
+        slot='7806394673'
+        style={{ display: 'block' }}
+        layout='in-article'
+        format='fluid'
+      />
       <Typography variant='h6' gutterBottom className={classes.sidebarSection}>
         Social
       </Typography>

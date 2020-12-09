@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography, Divider } from '@material-ui/core'
+import AdSense from 'react-adsense'
 import Markdown from './markdown'
 
 const useStyles = makeStyles((theme) => ({
@@ -26,6 +27,13 @@ export default function Main(props) {
           {post}
         </Markdown>
       ))}
+      <AdSense.Google
+        client='ca-pub-1815769508579401'
+        slot='7806394673'
+        style={{ display: 'block', width: '100%', backgroundColor: 'white', marginTop: '50px' }}
+        layout='in-article'
+        format='fluid'
+      />
     </Grid>
   )
 }
