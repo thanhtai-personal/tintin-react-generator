@@ -44,7 +44,7 @@ const BlogComponent = (props) => {
           </Grid>
         </main>
       </Container>
-      <Footer title='Footer' description='Something here to give the footer a purpose!' />
+      <Footer title='Thanks' description='Goodbye, see you again!' />
     </React.Fragment>
   )
 }

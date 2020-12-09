@@ -54,8 +54,14 @@ const initalState = {
         type: 'link'
       },
       {
+        key: 'blog',
+        name: 'Blog',
+        value: 'https://tttgalaxy.co.uk/blogger',
+        type: 'link'
+      },
+      {
         key: 'LinkedIn',
-        name: 'Site',
+        name: 'Linkedin',
         value: 'https://www.linkedin.com/in/tran-thanh-tai-539250129/',
         type: 'link'
       },

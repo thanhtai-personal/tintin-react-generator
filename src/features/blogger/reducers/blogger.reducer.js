@@ -4,16 +4,16 @@ import { BLOGGER_ACTION } from '../actions/types'
 import post1 from './data/blog-post.1.md'
 import post2 from './data/blog-post.2.md'
 import post3 from './data/blog-post.3.md'
-import GitHubIcon from '@material-ui/icons/GitHub'
-import FacebookIcon from '@material-ui/icons/Facebook'
-import TwitterIcon from '@material-ui/icons/Twitter'
+import { GitHub, LinkedIn, Person } from '@material-ui/icons'
 
 const initalState = {
   sections: [
-    { title: 'ReactJS', url: '/' },
-    { title: 'HTML/Css', url: '/' },
-    { title: 'Games', url: '/' },
-    { title: 'Travel', url: '/' },
+    { title: 'ReactJS', url: '/blogger?query=reactjs' },
+    { title: 'HTML/Css', url: '/blogger?query=htmlcss' },
+    { title: 'Games', url: '/blogger?query=game' },
+    { title: 'Travel', url: '/blogger?query=travel' },
+    { title: 'Novals', url: '/blogger?query=novals' },
+    { title: 'Film', url: '/blogger?query=film' },
   ],
   mainFeaturedPost: {
     title: 'Title of a longer featured blog post',
@@ -45,24 +45,12 @@ const initalState = {
   sidebar: {
     title: 'About',
     description:
-      'Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.',
-    archives: [
-      { title: 'March 2020', url: '#' },
-      { title: 'February 2020', url: '#' },
-      { title: 'January 2020', url: '#' },
-      { title: 'November 1999', url: '#' },
-      { title: 'October 1999', url: '#' },
-      { title: 'September 1999', url: '#' },
-      { title: 'August 1999', url: '#' },
-      { title: 'July 1999', url: '#' },
-      { title: 'June 1999', url: '#' },
-      { title: 'May 1999', url: '#' },
-      { title: 'April 1999', url: '#' },
-    ],
+      'A simple blogger page to show some content',
+    archives: [],
     social: [
-      { name: 'GitHub', icon: GitHubIcon },
-      { name: 'Twitter', icon: TwitterIcon },
-      { name: 'Facebook', icon: FacebookIcon },
+      { name: 'GitHub', icon: GitHub, url: 'https://github.com/thanhtai-personal' },
+      { name: 'Linkedin', icon: LinkedIn, url: 'https://www.linkedin.com/in/tran-thanh-tai-539250129/' },
+      { name: 'Personal Site', icon: Person, url: 'https://tttgalaxy.co.uk'},
     ],
   }
 }
