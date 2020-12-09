@@ -1,9 +1,9 @@
 
 import Utils from 'root/utils'
 import { BLOGGER_ACTION } from '../actions/types'
-import post1 from './data/blog-post.1.md'
-import post2 from './data/blog-post.2.md'
-import post3 from './data/blog-post.3.md'
+import post1 from './data/posts/test/blog-post.1.md'
+import post2 from './data/posts/test/blog-post.2.md'
+import post3 from './data/posts/test/blog-post.3.md'
 import { GitHub, LinkedIn, Person } from '@material-ui/icons'
 
 const initalState = {
