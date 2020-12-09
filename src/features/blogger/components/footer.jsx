@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
-import { Container, Typography, Link} from '@material-ui/core'
+import { Container, Typography, Link } from '@material-ui/core'
 
 function Copyright() {
   return (
@@ -20,6 +20,8 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: '#E2EEE2',
     padding: theme.spacing(6, 0),
+    borderTop: 'outset 2px black',
+    boxShadow: '10px 10px 8px 10px black'
   },
 }))
 
