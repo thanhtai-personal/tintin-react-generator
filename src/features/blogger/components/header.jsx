@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import { Toolbar, Link, Typography } from '@material-ui/core'
+import { useEffect } from 'react'
 
 const useStyles = (props) => makeStyles((theme) => ({
   toolbar: {
@@ -22,12 +23,26 @@ const useStyles = (props) => makeStyles((theme) => ({
       backgroundColor: theme.palette.divider
     }
   },
+  active: {
+    backgroundColor: 'steelblue',
+    color: 'white'
+  }
 }))()
 
 export default function Header(props) {
   const classes = useStyles(props)
   const { sections, title } = props
-
+  const [ activeTab, setActiveTab ] = useState('')
+  const onClickTab = useCallback((section) => {
+    const search = new URLSearchParams(window.location.search)
+    section && window.history.pushState({}, section.key, section.url)
+    const query = search.get('query') || ''
+    setActiveTab(section?.key || query.trim())
+  }, [setActiveTab])
+  useEffect(() => {
+    onClickTab({})
+  }, [ onClickTab ])
+  console.log('activetab', activeTab)
   return (
     <React.Fragment>
        <Toolbar className={classes.toolbar}>
@@ -45,12 +60,14 @@ export default function Header(props) {
       <Toolbar component='nav' variant='dense' className={classes.toolbarSecondary}>
         {sections.map((section) => (
           <Link
+            id={section.key}
             color='inherit'
             noWrap
             key={section.title}
             variant='body2'
-            href={section.url}
-            className={classes.toolbarLink}
+            value={section.key}
+            onClick={() => onClickTab(section)}
+            className={[classes.toolbarLink, section.key === activeTab ? classes.active : null].join(' ')}
           >
             <Typography align={'center'}>{section.title}</Typography>
           </Link>

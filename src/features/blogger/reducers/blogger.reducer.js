@@ -8,12 +8,12 @@ import { GitHub, LinkedIn, Person } from '@material-ui/icons'
 
 const initalState = {
   sections: [
-    { title: 'ReactJS', url: '/blogger?query=reactjs' },
-    { title: 'HTML/CSS', url: '/blogger?query=htmlcss' },
-    { title: 'Games', url: '/blogger?query=game' },
-    { title: 'Travel', url: '/blogger?query=travel' },
-    { title: 'Novals', url: '/blogger?query=novals' },
-    { title: 'Film', url: '/blogger?query=film' },
+    { title: 'ReactJS', url: '/blogger?query=reactjs', key: 'reactjs' },
+    { title: 'HTML/CSS', url: '/blogger?query=htmlcss', key: 'htmlcss' },
+    { title: 'Games', url: '/blogger?query=game', key: 'game' },
+    { title: 'Travel', url: '/blogger?query=travel', key: 'travel' },
+    { title: 'Novals', url: '/blogger?query=novals', key: 'novals' },
+    { title: 'Films', url: '/blogger?query=films', key: 'films' },
   ],
   mainFeaturedPost: {
     title: 'Title of a longer featured blog post',
