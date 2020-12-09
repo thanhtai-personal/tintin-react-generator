@@ -19,7 +19,7 @@ export default function Sidebar(props) {
   const classes = useStyles()
   const { archives, description, social, title } = props
 
-  const LazyLoadedGGAdsense = useLazyLoadSection(AdSense.Google, { elementId: 'google-adsense-2', height: '700px'  })
+  const LazyLoadedGGAdsense = useLazyLoadSection(AdSense.Google, { elementId: 'google-adsense-2', height: '350px'  })
   return (
     <Grid item xs={12} md={4}>
       <Paper elevation={0} className={classes.sidebarAboutBox}>

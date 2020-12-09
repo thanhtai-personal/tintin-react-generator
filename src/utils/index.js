@@ -31,6 +31,9 @@ export const isElementInViewport = (el) => {
 }
 
 export const makeSuspenseComponent = (component) => (<Suspense fallback={<CircularProgress />}>{component}</Suspense>)
+export const hocKeys = {
+    multiTheme: 'multiTheme'
+  }
 
 const utils = {
     ...actionHelpers

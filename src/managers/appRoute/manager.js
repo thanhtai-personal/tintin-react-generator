@@ -1,6 +1,8 @@
 import React from 'react'
 import { Route } from 'react-router'
-import hocInstant from 'root/hocs/instant'
+import getHocsInstant from 'root/hocs/instant'
+
+const hocInstant = getHocsInstant()
 
 const combineRoute = (appRoutes) => {
   let routesList = []
@@ -13,7 +15,7 @@ const combineRoute = (appRoutes) => {
     let resultComponent = route.component
     if (Array.isArray(route.hocs)) {
       route.hocs.forEach((hoc) => {
-        hocInstant.call(hoc, resultComponent)
+        resultComponent = hocInstant.call(hoc, resultComponent)
       })
     }
     return <Route key={route.key} path={route.path} exact={route.isExact} component={resultComponent} />

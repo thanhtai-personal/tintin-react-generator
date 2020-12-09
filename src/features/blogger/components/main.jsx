@@ -17,7 +17,7 @@ export default function Main(props) {
   const classes = useStyles()
   const { posts, title } = props
 
-  const LazyLoadedGGAdsense = useLazyLoadSection(AdSense.Google, { elementId: 'google-adsense-1', height: '700px' })
+  const LazyLoadedGGAdsense = useLazyLoadSection(AdSense.Google, { elementId: 'google-adsense-1', height: '200px' })
 
   return (
     <Grid item xs={12} md={8}>

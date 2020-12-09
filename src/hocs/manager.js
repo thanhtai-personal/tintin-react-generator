@@ -1,12 +1,17 @@
+import useMultiThemes from './theme'
+import { hocKeys } from 'root/utils'
+
 const combineHoc = (hocObj) => {
   return Object.keys(hocObj).map((key) => hocObj[key])
 }
 
 function createHocs() {
   // Create an object which maps keys to hocs
-  const hocObj = {}
+  const hocObj = { 
+    [hocKeys.multiTheme]: useMultiThemes
+  }
   // Create the initial combinedHOC
-  let hocs = []
+  let hocs = [ useMultiThemes ]
 
   return {
     getHocsMap: () => hocObj,
@@ -14,6 +19,11 @@ function createHocs() {
     // The root HOC function exposed by this object
     reduce: () => {
       return hocs
+    },
+
+    
+    call: (hocName, wrappedComponent) => {
+      return hocObj[hocName](wrappedComponent)
     },
 
     // Adds a new HOC with the specified key

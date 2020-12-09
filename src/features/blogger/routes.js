@@ -1,4 +1,5 @@
 import BloggerContainer from './containers/blogger'
+import { hocKeys } from 'root/utils'
 
 const defaultRoutes = [
   {
@@ -6,7 +7,7 @@ const defaultRoutes = [
     path: '/blogger',
     isExact: true,
     component: BloggerContainer,
-    hocs: []
+    hocs: [ hocKeys.multiTheme ]
   },
 ]
 
