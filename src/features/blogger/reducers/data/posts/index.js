@@ -1,7 +1,7 @@
 
 import images, { imageKeys } from '../images/imagesSource'
-import hooksAtAGlance from './reactJs/hooksAtAGlance.md'
-import introducingHooks from './reactJs/introducingHooks.md'
+import hooksAtAGlance from './reactjs/hooksAtAGlance.md'
+import introducingHooks from './reactjs/introducingHooks.md'
 
 export const postKeys = {
   introducingHooks: 'introducingHooks',
