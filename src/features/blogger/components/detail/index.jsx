@@ -1,19 +1,34 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
+import { Container } from '@material-ui/core'
 import MarkDown from './../markdown'
 import { updateDetailBlogger } from './../../actions'
 
 const BlogDetail = (props) => {
 
-  const { updateDetailBlogger } = props
+  const [markdown, setMarkdown] = useState('')
+  const { updateDetailBlogger, detail } = props
 
   useEffect(() => {
     updateDetailBlogger && typeof updateDetailBlogger === 'function' && updateDetailBlogger(props.match?.params?.key || 'noPost')
-  }, [ updateDetailBlogger ])
+  }, [ updateDetailBlogger, props.match?.params?.key])
+
+  useEffect(() => {
+    fetch(detail?.content)
+      .then(response => {
+        return response?.text()
+      })
+      .then(text => {
+        setMarkdown(text)
+      })
+  }, [detail])
+
   return (
-    <MarkDown>
-      {props.detail?.content || ''}
-    </MarkDown>
+    <Container>
+      <MarkDown style={{ padding: '2em', minHeight: '91vh'}}>
+        {markdown}
+      </MarkDown>
+    </Container>
   )
 }
 

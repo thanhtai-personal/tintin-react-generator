@@ -2,11 +2,12 @@ import React from 'react'
 import ReactMarkdown from 'markdown-to-jsx'
 import { withStyles } from '@material-ui/core/styles'
 import { Typography, Link } from '@material-ui/core'
+import MarkdownImage from './markdowns/markdownImage'
 
 const styles = (theme) => ({
   listItem: {
     marginTop: theme.spacing(1),
-  },
+  }
 })
 
 const options = {
@@ -16,6 +17,7 @@ const options = {
       props: {
         gutterBottom: true,
         variant: 'h5',
+        align: 'center'
       },
     },
     h2: { component: Typography, props: { gutterBottom: true, variant: 'h6' } },
@@ -33,7 +35,13 @@ const options = {
         </li>
       )),
     },
-  },
+    endArea: { component: Typography, props: { align: 'center', style: { bottom: '0px' } } },
+    mdImage: {
+      component: withStyles(styles)((props) => (
+        <MarkdownImage {...props}/>
+      )),
+    },
+  }
 }
 
 export default function Markdown(props) {

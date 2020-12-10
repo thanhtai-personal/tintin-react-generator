@@ -1,7 +1,11 @@
-# Giới thiệu về Hooks
+# Giới thiệu về Hooks <br><br>
+Hook được đưa lên từ phiên bản React 16.8 để giúp bạn quản lý state và các tính năng khác mà không sữ dụng class<br>
 
-Hook được đưa lên từ phiên bản React 16.8 để giúp bạn quản lý state và các tính năng khác mà không sữ dụng class
-``
+<mdImage imageKey='reactHook' width='100%' height='auto'></mdImage><br><br>
+
+Sữ dụng hook State:
+
+```
 import React, { useState } from 'react';
 
 function Example() {
@@ -17,7 +21,9 @@ function Example() {
     </div>
   );
 }
-``
-Phía trên là ví dụ về cách sữ dụng state trong function component.
+```
+Phía trên là ví dụ về cách sữ dụng state trong function component.<br><br>
 
-Nguồn tham khảo: [This link](https://reactjs.org/docs/hooks-intro.html#gatsby-focus-wrapper)
+Nguồn tham khảo: [React documents - introducing hooks](https://reactjs.org/docs/hooks-intro.html#gatsby-focus-wrapper)<br><br><br>
+
+<endArea>| [Prev]('/gtReactHook') | END | [Next]('/beginReactHook') |</endArea>

@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography, Divider } from '@material-ui/core'
 import AdSense from 'react-adsense'
 import { useLazyLoadSection } from 'root/utils/renderHelper'
-import Markdown from './markdown'
 
 const useStyles = makeStyles((theme) => ({
   markdown: {
