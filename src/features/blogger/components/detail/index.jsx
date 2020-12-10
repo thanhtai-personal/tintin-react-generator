@@ -14,17 +14,15 @@ const BlogDetail = (props) => {
   }, [ updateDetailBlogger, props.match?.params?.key])
 
   useEffect(() => {
-    console.log('detail?.content', detail?.content)
     fetch(detail?.content)
       .then(response => {
-        console.log('response', response)
         return response?.text()
       })
       .then(text => {
-        console.log('text', text)
         setMarkdown(text)
       })
-  }, [detail])
+      //eslint-disable-next-line
+  }, [])
 
   return (
     <Container>

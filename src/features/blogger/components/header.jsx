@@ -42,7 +42,8 @@ export default function Header(props) {
 
   useEffect(() => {
     onClickTab({})
-  }, [ onClickTab ])
+  // eslint-disable-next-line
+  }, [])
   
   return (
     <React.Fragment>
