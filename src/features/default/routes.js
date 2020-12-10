@@ -4,7 +4,7 @@ import setUpFeature from './setup'
 const defaultRoutes = [
   {
     key: 'default',
-    path: '/',
+    path: '/profile',
     isExact: true,
     component: HomeContainer,
     hocs: [],
