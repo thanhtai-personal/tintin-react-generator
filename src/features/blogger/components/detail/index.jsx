@@ -7,28 +7,24 @@ import { updateDetailBlogger } from './../../actions'
 const BlogDetail = (props) => {
 
   const [markdown, setMarkdown] = useState('')
-  const { updateDetailBlogger, detail } = props
-
+  const { updateDetailBlogger, detail = {} } = props
+  const { content } = detail
   useEffect(() => {
     updateDetailBlogger && typeof updateDetailBlogger === 'function' && updateDetailBlogger(props.match?.params?.key || 'noPost')
   }, [updateDetailBlogger, props.match?.params?.key])
 
   useEffect(() => {
-    console.log('component did mount!!', detail?.content)
-    console.log('------------------------------------------')
-    fetch(detail?.content)
+    content && fetch(content)
       .then(response => {
-        console.log('response', response)
-        console.log('------------------------------------------')
         return response?.text()
       })
       .then(text => {
-        console.log('text', text)
-        console.log('------------------------------------------')
         setMarkdown(text)
       })
-    //eslint-disable-next-line
-  }, [])
+      .catch((error) => {
+        console.log('mdfile error === ', error)
+      })
+  }, [content])
 
   return (
     <Container>
