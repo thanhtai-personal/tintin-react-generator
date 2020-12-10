@@ -26,4 +26,4 @@ Phía trên là ví dụ về cách sữ dụng state trong function component.<
 
 Nguồn tham khảo: [React documents - introducing hooks](https://reactjs.org/docs/hooks-intro.html#gatsby-focus-wrapper)<br><br><br>
 
-<endArea>| [Prev](/gtReactHook) | END | [Next](/beginReactHook) |</endArea>
+<endArea>| [Prev](introducingHooks) | \~\~\~\~\~\~\~END~\~\~\~\~\~\~ | [Hooks At A Glance](hooksAtAGlance) |</endArea>

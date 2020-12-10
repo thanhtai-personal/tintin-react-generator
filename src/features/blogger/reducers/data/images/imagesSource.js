@@ -1,4 +1,5 @@
 import ReactHookImage from 'root/assert/images/hook.png'
+import ReactHookMediaImage from 'root/assert/images/hookMedia.png'
 
 export const imageKeys = {
   reactHook: 'reactHook',
@@ -7,7 +8,7 @@ export const imageKeys = {
 
 const images = {
   [imageKeys.reactHook]: ReactHookImage,
-  [imageKeys.reactHookMedia]: ReactHookImage
+  [imageKeys.reactHookMedia]: ReactHookMediaImage
 }
 
 export default images

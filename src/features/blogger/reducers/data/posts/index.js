@@ -1,9 +1,11 @@
 
 import images, { imageKeys } from '../images/imagesSource'
+import hooksAtAGlance from './reactjs/hooksAtAGlance.md'
 import introducingHooks from './reactjs/introducingHooks.md'
 
 export const postKeys = {
-  introducingHooks: 'introducingHooks'
+  introducingHooks: 'introducingHooks',
+  hooksAtAGlance: 'hooksAtAGlance'
 }
 
 export const postGroupKeys = {
@@ -25,17 +27,30 @@ export const postGroups = [
 ]
 
 const posts = {
-  [postGroupKeys.reactJs]: [{
-    key: postKeys.introducingHooks,
-    content: introducingHooks,
-    title: 'Introducing hook',
-    image: images[imageKeys.reactHook],
-    date: '10/12/2020',
-    description: 'Hook được đưa lên từ phiên bản React 16.8 để giúp bạn quản lý state và các tính năng khác mà không sữ dụng class',
-    mediaImage: images[imageKeys.reactHookMedia],
-    imageTitle: 'hook media image',
-    linkText: 'Đọc tiếp...'
-  }],
+  [postGroupKeys.reactJs]: [
+    {
+      key: postKeys.introducingHooks,
+      content: introducingHooks,
+      title: 'Giới thiệu về hooks',
+      image: images[imageKeys.reactHook],
+      date: '10/12/2020',
+      description: 'Hook được đưa lên từ phiên bản React 16.8 để giúp bạn quản lý state và các tính năng khác mà không sữ dụng class',
+      mediaImage: images[imageKeys.reactHookMedia],
+      imageTitle: 'hook media image',
+      linkText: 'Đọc tiếp...'
+    },
+    {
+      key: postKeys.hooksAtAGlance,
+      content: hooksAtAGlance,
+      title: 'Sơ bộ về Hooks',
+      image: images[imageKeys.reactHook],
+      date: '10/12/2020',
+      description: 'Hook được đưa lên từ phiên bản React 16.8 để giúp bạn quản lý state và các tính năng khác mà không sữ dụng class',
+      mediaImage: images[imageKeys.reactHookMedia],
+      imageTitle: 'hook media image',
+      linkText: 'Đọc tiếp...'
+    }
+  ],
   [postGroupKeys.htmlCss]: [],
   [postGroupKeys.games]: [],
   [postGroupKeys.travel]: [],
