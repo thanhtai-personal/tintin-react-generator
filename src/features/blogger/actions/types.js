@@ -1,1 +1,1 @@
-export const BLOGGER_ACTION = 'blogger-action'
+export const UPDATE_DETAIL_BLOG = 'UPDATE_DETAIL_BLOG'

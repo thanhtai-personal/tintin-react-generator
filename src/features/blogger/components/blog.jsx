@@ -8,9 +8,6 @@ import FeaturedPost from './featuredPost'
 import Main from './main'
 import Sidebar from './sideBar'
 import Footer from './footer'
-import setupFeature from './../setup'
-
-setupFeature()
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {

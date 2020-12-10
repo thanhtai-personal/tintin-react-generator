@@ -1,10 +1,15 @@
 
 import Utils from 'root/utils'
-import { BLOGGER_ACTION } from '../actions/types'
-import post1 from './data/posts/test/blog-post.1.md'
-import post2 from './data/posts/test/blog-post.2.md'
-import post3 from './data/posts/test/blog-post.3.md'
+import { UPDATE_DETAIL_BLOG } from '../actions/types'
+import introduceHooks from './data/posts/reactjs/introducingHooks.md'
 import { GitHub, LinkedIn, Person } from '@material-ui/icons'
+import reactHookImage from 'root/assert/images/hook.png'
+
+const posts = [ {
+  key: 'gtReactHook',
+  content: introduceHooks
+} ]
+
 
 const initalState = {
   sections: [
@@ -16,12 +21,13 @@ const initalState = {
     { title: 'Films', url: '/blogger?query=films', key: 'films' },
   ],
   mainFeaturedPost: {
-    title: 'Title of a longer featured blog post',
+    title: 'Giới thiệu về react Hooks',
     description:
-      `Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.`,
-    image: 'https://source.unsplash.com/random',
-    imgText: 'main image description',
-    linkText: 'Continue reading…',
+      `Hook được đưa lên từ phiên bản React 16.8 để giúp bạn quản lý state và các tính năng khác mà không sữ dụng class.`,
+    image: reactHookImage,
+    imgText: 'react hook image',
+    linkText: 'Đọc tiếp',
+    key: 'gtReactHook'
   },
   featuredPosts: [
     {
@@ -41,7 +47,6 @@ const initalState = {
       imageText: 'Image Text',
     },
   ],
-  posts: [post1, post2, post3],
   sidebar: {
     title: 'About',
     description:
@@ -52,22 +57,26 @@ const initalState = {
       { name: 'Linkedin', icon: LinkedIn, url: 'https://www.linkedin.com/in/tran-thanh-tai-539250129/' },
       { name: 'Personal Site', icon: Person, url: 'https://tttgalaxy.co.uk'},
     ],
+  },
+  detail: {
+    content: introduceHooks,
+    key: 'gtReactHook'
   }
 }
 
 const bloggerReducer = (state = initalState, { type, payload }) => {
   switch (type) {
-    case BLOGGER_ACTION:
+    case UPDATE_DETAIL_BLOG:
       return {
         ...state,
         ...payload
       }
-    case Utils.makeSagasActionType(BLOGGER_ACTION).SUCCESS:
+    case Utils.makeSagasActionType(UPDATE_DETAIL_BLOG).SUCCESS:
       return {
         ...state,
-        ...payload
+        detail: posts.find((post) => (post.key === payload)) || {}
       }
-    case Utils.makeSagasActionType(BLOGGER_ACTION).FAILED:
+    case Utils.makeSagasActionType(UPDATE_DETAIL_BLOG).FAILED:
       return {
         ...state,
         ...payload

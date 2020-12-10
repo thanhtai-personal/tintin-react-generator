@@ -1,4 +1,5 @@
 import HomeContainer from './containers/home'
+import setUpFeature from './setup'
 
 const defaultRoutes = [
   {
@@ -6,14 +7,16 @@ const defaultRoutes = [
     path: '/',
     isExact: true,
     component: HomeContainer,
-    hocs: []
+    hocs: [],
+    setUpStore: setUpFeature
   },
   {
     key: 'home',
     path: '/home',
     isExact: true,
     component: HomeContainer,
-    hocs: []
+    hocs: [],
+    setUpStore: setUpFeature
   }
 ]
 

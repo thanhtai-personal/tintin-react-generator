@@ -50,7 +50,7 @@ export default function MainFeaturedPost(props) {
             <Typography variant='h5' color='inherit' paragraph>
               {post.description}
             </Typography>
-            <Link variant='subtitle1' href='#'>
+            <Link variant='subtitle1' target='_blank' href={`/blogger/${post.key}`}>
               {post.linkText}
             </Link>
           </div>

@@ -1,13 +1,10 @@
 import {
-  BLOGGER_ACTION
+  UPDATE_DETAIL_BLOG
 } from './types'
 
-export const bloggertAction = (key, value) => {
-  let payload = {
-    [key]: value
-  }
+export const updateDetailBlogger = (data) => {
   return {
-    type: BLOGGER_ACTION,
-    payload
+    type: UPDATE_DETAIL_BLOG,
+    payload: data
   }
 }
