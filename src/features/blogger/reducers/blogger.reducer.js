@@ -1,56 +1,78 @@
 
-import Utils from 'root/utils'
-import { UPDATE_DETAIL_BLOG } from '../actions/types'
-import introduceHooks from './data/posts/reactjs/introducingHooks.md'
+import { UPDATE_DETAIL_BLOG
+  , UPDATE_ACTIVE_TAB
+} from '../actions/types'
 import { GitHub, LinkedIn, Person } from '@material-ui/icons'
-import reactHookImage from 'root/assert/images/hook.png'
-
-const posts = [ {
-  key: 'gtReactHook',
-  content: introduceHooks
-} ]
-
+import images, { imageKeys } from './data/images/imagesSource'
+import posts, { postKeys, postGroupKeys, postGroups } from './data/posts'
 
 const initalState = {
-  sections: [
-    { title: 'ReactJS', url: '/blogger?query=reactjs', key: 'reactjs' },
-    { title: 'HTML/CSS', url: '/blogger?query=htmlcss', key: 'htmlcss' },
-    { title: 'Games', url: '/blogger?query=game', key: 'game' },
-    { title: 'Travel', url: '/blogger?query=travel', key: 'travel' },
-    { title: 'Novals', url: '/blogger?query=novals', key: 'novals' },
-    { title: 'Films', url: '/blogger?query=films', key: 'films' },
-  ],
+  sections: postGroups,
   mainFeaturedPost: {
-    title: 'Giới thiệu về react Hooks',
-    description:
-      `Hook được đưa lên từ phiên bản React 16.8 để giúp bạn quản lý state và các tính năng khác mà không sữ dụng class.`,
-    image: reactHookImage,
-    imgText: 'react hook image',
-    linkText: 'Đọc tiếp',
-    key: 'gtReactHook'
+    [postGroupKeys.reactJs]: {
+      title: 'Giới thiệu về react Hooks',
+      description:
+        `Hook được đưa lên từ phiên bản React 16.8 để giúp bạn quản lý state và các tính năng khác mà không sữ dụng class.`,
+      image: images[imageKeys.reactHook],
+      mediaImage: images[imageKeys.reactHookMedia],
+      imgText: 'react hook image',
+      linkText: 'Đọc tiếp',
+      key: postKeys.introducingHooks,
+      imageTitle: 'react hook media image'
+    },
+    [postGroupKeys.films]: {
+      title: '',
+      description: '',
+      image: '',
+      imgText: '',
+      linkText: 'Đọc tiếp',
+      key: '',
+    },
+    [postGroupKeys.games]: {
+      title: '',
+      description: '',
+      image: '',
+      imgText: '',
+      linkText: 'Đọc tiếp',
+      key: '',
+    },
+    [postGroupKeys.htmlCss]: {
+      title: '',
+      description: '',
+      image: '',
+      imgText: '',
+      linkText: 'Đọc tiếp',
+      key: '',
+    },
+    [postGroupKeys.novals]: {
+      title: '',
+      description: '',
+      image: '',
+      imgText: '',
+      linkText: 'Đọc tiếp',
+      key: '',
+    },
+    [postGroupKeys.travel]: {
+      title: '',
+      description: '',
+      image: '',
+      imgText: '',
+      linkText: 'Đọc tiếp',
+      key: '',
+    }
   },
-  featuredPosts: [
-    {
-      title: 'Featured post',
-      date: 'Nov 12',
-      description:
-        'This is a wider card with supporting text below as a natural lead-in to additional content.',
-      image: 'https://source.unsplash.com/random',
-      imageText: 'Image Text',
-    },
-    {
-      title: 'Post title',
-      date: 'Nov 11',
-      description:
-        'This is a wider card with supporting text below as a natural lead-in to additional content.',
-      image: 'https://source.unsplash.com/random',
-      imageText: 'Image Text',
-    },
-  ],
+  featuredPosts: {
+    [postGroupKeys.reactJs]: posts[postGroupKeys.reactJs],
+    [postGroupKeys.films]: posts[postGroupKeys.films],
+    [postGroupKeys.games]: posts[postGroupKeys.games],
+    [postGroupKeys.htmlCss]: posts[postGroupKeys.htmlCss],
+    [postGroupKeys.novals]: posts[postGroupKeys.novals],
+    [postGroupKeys.travel]: posts[postGroupKeys.travel]
+  },
   sidebar: {
     title: 'About',
     description:
-      'A simple blogger page to show some content',
+      'A simple blogger page of Tai Tran',
     archives: [],
     social: [
       { name: 'GitHub', icon: GitHub, url: 'https://github.com/thanhtai-personal' },
@@ -58,10 +80,8 @@ const initalState = {
       { name: 'Personal Site', icon: Person, url: 'https://tttgalaxy.co.uk'},
     ],
   },
-  detail: {
-    content: introduceHooks,
-    key: 'gtReactHook'
-  }
+  detail: {},
+  activeTab: postGroupKeys.reactJs
 }
 
 const bloggerReducer = (state = initalState, { type, payload }) => {
@@ -69,17 +89,12 @@ const bloggerReducer = (state = initalState, { type, payload }) => {
     case UPDATE_DETAIL_BLOG:
       return {
         ...state,
-        ...payload
+        detail: posts[state.activeTab].find(post => post.key === payload) || {}
       }
-    case Utils.makeSagasActionType(UPDATE_DETAIL_BLOG).SUCCESS:
+    case UPDATE_ACTIVE_TAB:
       return {
         ...state,
-        detail: posts.find((post) => (post.key === payload)) || {}
-      }
-    case Utils.makeSagasActionType(UPDATE_DETAIL_BLOG).FAILED:
-      return {
-        ...state,
-        ...payload
+        activeTab: payload || postGroupKeys.reactJs
       }
     default:
       return state

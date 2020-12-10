@@ -1,11 +1,11 @@
 import React from 'react'
-import images from './imagesSource'
+import images from '../../reducers/data/images/imagesSource'
 
 const MarkdownImage = (props) => {
   const { width, height } = props
   return (
     <picture>
-      <img src={images[props?.imageKey]} style={{ width, height }}>
+      <img alt={props?.imageKey} src={images[props?.imageKey]} style={{ width, height }}>
       </img>
     </picture>
   )

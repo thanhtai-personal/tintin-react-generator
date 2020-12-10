@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 import { CssBaseline, Grid, Container } from '@material-ui/core'
+import { updateActiveTab } from './../actions'
 import Header from './header'
 import MainFeaturedPost from './mainFeaturedPost'
 import FeaturedPost from './featuredPost'
@@ -14,20 +15,23 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(3),
   },
 }))
-
 const BlogComponent = (props) => {
   const classes = useStyles()
-  const { sections, mainFeaturedPost, featuredPosts, posts, sidebar } = props
+  const { sections, mainFeaturedPost, featuredPosts, posts, sidebar, activeTab
+    , updateActiveTab
+  } = props
+  
+console.log('post', mainFeaturedPost[activeTab])
   return (
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth='lg'>
-        <Header title='Blog' sections={sections} />
+        <Header title='Blog' updateActiveTab={updateActiveTab} activeTab={activeTab} sections={sections} />
         <main>
-          <MainFeaturedPost post={mainFeaturedPost} />
+          <MainFeaturedPost post={mainFeaturedPost[activeTab]} />
           <Grid container spacing={4}>
-            {featuredPosts.map((post) => (
-              <FeaturedPost key={post.title} post={post} />
+            {featuredPosts[activeTab]?.map((post) => (
+              <FeaturedPost key={post.key} post={post} />
             ))}
           </Grid>
           <Grid container spacing={5} className={classes.mainGrid}>
@@ -53,9 +57,11 @@ const mapState = (state) => ({
   featuredPosts: state.blogger?.featuredPosts,
   posts: state.blogger?.posts,
   sidebar: state.blogger?.sidebar,
+  activeTab: state.blogger?.activeTab
 })
 
 const mapDispatch = {
+  updateActiveTab
 }
 
 export default connect(mapState, mapDispatch)(BlogComponent)

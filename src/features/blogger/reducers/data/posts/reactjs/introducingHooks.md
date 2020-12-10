@@ -3,7 +3,7 @@ Hook được đưa lên từ phiên bản React 16.8 để giúp bạn quản l
 
 <mdImage imageKey='reactHook' width='100%' height='auto'></mdImage><br><br>
 
-Sữ dụng hook State:
+Sữ dụng hook useState:
 
 ```
 import React, { useState } from 'react';
@@ -26,4 +26,4 @@ Phía trên là ví dụ về cách sữ dụng state trong function component.<
 
 Nguồn tham khảo: [React documents - introducing hooks](https://reactjs.org/docs/hooks-intro.html#gatsby-focus-wrapper)<br><br><br>
 
-<endArea>| [Prev]('/gtReactHook') | END | [Next]('/beginReactHook') |</endArea>
+<endArea>| [Prev](/gtReactHook) | END | [Next](/beginReactHook) |</endArea>

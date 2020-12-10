@@ -18,10 +18,9 @@ const useStyles = makeStyles({
 export default function FeaturedPost(props) {
   const classes = useStyles()
   const { post } = props
-
   return (
     <Grid item xs={12} md={6}>
-      <CardActionArea component='a' href='#'>
+      <CardActionArea component='a' target='_blank' href={`/blogger/${post.key}`}>
         <Card className={classes.card}>
           <div className={classes.cardDetails}>
             <CardContent>
@@ -35,12 +34,12 @@ export default function FeaturedPost(props) {
                 {post.description}
               </Typography>
               <Typography variant='subtitle1' color='primary'>
-                Continue reading...
+                {post.linkText}
               </Typography>
             </CardContent>
           </div>
           <Hidden xsDown>
-            <CardMedia className={classes.cardMedia} image={post.image} title={post.imageTitle} />
+            <CardMedia className={classes.cardMedia} image={post.mediaImage} title={post.imageTitle} />
           </Hidden>
         </Card>
       </CardActionArea>

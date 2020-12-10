@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import { Toolbar, Link, Typography } from '@material-ui/core'
@@ -31,18 +31,19 @@ const useStyles = (props) => makeStyles((theme) => ({
 
 export default function Header(props) {
   const classes = useStyles(props)
-  const { sections, title } = props
-  const [ activeTab, setActiveTab ] = useState('')
+  const { sections, title, activeTab, updateActiveTab } = props
+
   const onClickTab = useCallback((section) => {
     const search = new URLSearchParams(window.location.search)
     section && window.history.pushState({}, section.key, section.url)
     const query = search.get('query') || ''
-    setActiveTab(section?.key || query.trim())
-  }, [setActiveTab])
+    updateActiveTab(section?.key || query.trim())
+  }, [updateActiveTab])
+
   useEffect(() => {
     onClickTab({})
   }, [ onClickTab ])
-  console.log('activetab', activeTab)
+  
   return (
     <React.Fragment>
        <Toolbar className={classes.toolbar}>

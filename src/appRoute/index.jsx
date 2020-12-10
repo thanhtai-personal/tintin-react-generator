@@ -17,7 +17,7 @@ function AppRoute () {
     <> { /* your usual react-router v4/v5 routing */}
       <Switch>
         {appRouteManager.reduce()}
-        <Route render={() => (<div>Miss</div>)} />
+        <Route render={() => (<div>Route not found!</div>)} />
       </Switch>
     </>
   );
