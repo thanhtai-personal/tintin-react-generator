@@ -48,9 +48,9 @@ const initalState = {
         value: 'Tan Thoi Hiep, 12 district, Ho Chi Minh city, Viet Nam'
       },
       {
-        key: 'site',
-        name: 'Site',
-        value: 'https://tttgalaxy.co.uk',
+        key: 'profile',
+        name: 'Profile',
+        value: 'https://tttgalaxy.co.uk/profile',
         type: 'link'
       },
       {
