@@ -11,7 +11,7 @@ export const postKeys = {
 export const postGroupKeys = {
   reactJs: 'reactjs',
   htmlCss: 'htmlcss',
-  games: 'games',
+  history: 'history',
   travel: 'travel',
   novals: 'novals',
   films: 'films'
@@ -20,7 +20,7 @@ export const postGroupKeys = {
 export const postGroups = [
   { title: 'ReactJS', url: `/blogger?query=${postGroupKeys.reactJs}`, key: postGroupKeys.reactJs },
   { title: 'HTML/CSS', url: `/blogger?query=${postGroupKeys.htmlCss}`, key: postGroupKeys.htmlCss },
-  { title: 'Games', url: `/blogger?query=${postGroupKeys.games}`, key: postGroupKeys.games },
+  { title: 'History', url: `/blogger?query=${postGroupKeys.history}`, key: postGroupKeys.history },
   { title: 'Travel', url: `/blogger?query=${postGroupKeys.travel}`, key: postGroupKeys.travel },
   { title: 'Novals', url: `/blogger?query=${postGroupKeys.novals}`, key: postGroupKeys.novals },
   { title: 'Films', url: `/blogger?query=${postGroupKeys.films}`, key: postGroupKeys.films },
@@ -52,7 +52,7 @@ const posts = {
     }
   ],
   [postGroupKeys.htmlCss]: [],
-  [postGroupKeys.games]: [],
+  [postGroupKeys.history]: [],
   [postGroupKeys.travel]: [],
   [postGroupKeys.novals]: [],
   [postGroupKeys.films]: []

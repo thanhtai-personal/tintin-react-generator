@@ -207,4 +207,4 @@ function Todos() {
 * Tham khảo thêm tại [HOOKs APIs](https://reactjs.org/docs/hooks-reference.html)
 
 Nguồn tham khảo: [React documents - Hooks Overview](https://reactjs.org/docs/hooks-overview.html)<br><br><br>
-<endArea>| [Introducing hooks](/blogger/introducingHooks) | \~\~\~\~\~\~\~END~\~\~\~\~\~\~ | [Next](/blogger/beginReactHook) |</endArea>
+<endArea>| [Introducing hooks](/blogger/introducingHooks) | \~\~\~\~\~\~\~END~\~\~\~\~\~\~ | [Next](/blogger/usingTheStateHooks) |</endArea>

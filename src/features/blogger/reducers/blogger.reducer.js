@@ -29,7 +29,7 @@ const initalState = {
       linkText: 'Đọc tiếp',
       key: '',
     },
-    [postGroupKeys.games]: {
+    [postGroupKeys.history]: {
       title: '',
       description: '',
       image: '',
@@ -65,7 +65,7 @@ const initalState = {
   featuredPosts: {
     [postGroupKeys.reactJs]: posts[postGroupKeys.reactJs],
     [postGroupKeys.films]: posts[postGroupKeys.films],
-    [postGroupKeys.games]: posts[postGroupKeys.games],
+    [postGroupKeys.history]: posts[postGroupKeys.history],
     [postGroupKeys.htmlCss]: posts[postGroupKeys.htmlCss],
     [postGroupKeys.novals]: posts[postGroupKeys.novals],
     [postGroupKeys.travel]: posts[postGroupKeys.travel]
