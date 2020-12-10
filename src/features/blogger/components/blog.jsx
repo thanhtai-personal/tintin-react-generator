@@ -20,8 +20,8 @@ const BlogComponent = (props) => {
   const { sections, mainFeaturedPost, featuredPosts, posts, sidebar, activeTab
     , updateActiveTab
   } = props
-  
-console.log('post', mainFeaturedPost[activeTab])
+
+  console.log('post', mainFeaturedPost[activeTab])
   return (
     <React.Fragment>
       <CssBaseline />

@@ -26,14 +26,14 @@ const Hobbies = (props) => {
       <Typography align={'center'}>{getIconByKey(hobbie.icon)}</Typography>
       <Typography align={'center'}>{hobbie.text}</Typography>
     </Grid>)
-    }), [hobbies, classes])
+  }), [hobbies, classes])
   return (
     <Grid container className={classes.hoobies}>
       <Grid item xs={12}>
         <Typography variant={'h4'} align={'center'}>{'Hobbies'}</Typography>
       </Grid>
       <Grid container alignItems={'center'} alignContent={'center'}>
-          {hobbiesElement}
+        {hobbiesElement}
       </Grid>
     </Grid>
   )

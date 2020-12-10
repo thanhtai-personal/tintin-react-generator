@@ -7,7 +7,7 @@ const hocInstant = getHocsInstant()
 const combineRoute = (appRoutes) => {
   let routesList = []
   Object.keys(appRoutes).forEach((key) => {
-    if(Array.isArray(appRoutes[key])) {
+    if (Array.isArray(appRoutes[key])) {
       routesList = routesList.concat(appRoutes[key])
     }
   })

@@ -110,7 +110,7 @@ const Timeline = (props) => {
 	})
 	return (
 		<>
-			<Typography variant={'h5'} className={classes.title} align='center'> 
+			<Typography variant={'h5'} className={classes.title} align='center'>
 				{title}
 			</Typography>
 			<ul {...htmlProps} className={[classes.Timeline, props.className].join(' ')}>

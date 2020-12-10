@@ -3,7 +3,7 @@ import { MuiThemeProvider } from '@material-ui/core'
 import { getThemeByName, themeEnum } from './themes'
 import { useEffect } from 'react'
 
-export const ThemeContext = React.createContext((themeName) => {})
+export const ThemeContext = React.createContext((themeName) => { })
 
 const useMultiThemes = (ComposedComponent) => {
   const ThemeProvider = (props) => {
@@ -11,11 +11,11 @@ const useMultiThemes = (ComposedComponent) => {
     let theme = getThemeByName(themeEnum.light)
     useEffect(() => {
       theme = getThemeByName(themeName)
-    }, [ themeName, theme ])
+    }, [themeName, theme])
     return (
       <ThemeContext.Provider value={setTheme}>
         <MuiThemeProvider theme={theme}>
-          <ComposedComponent {...props}/>
+          <ComposedComponent {...props} />
         </MuiThemeProvider>
       </ThemeContext.Provider>
     )

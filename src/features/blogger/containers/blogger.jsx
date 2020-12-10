@@ -6,7 +6,7 @@ const BloggerComponent = React.lazy(() => import('../components/blog'))
 const BloggerContainer = (props) => {
   return (
     <Suspense fallback={<LoadingComponent />}>
-      <BloggerComponent {...props}/>
+      <BloggerComponent {...props} />
     </Suspense>
   )
 }

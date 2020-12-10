@@ -6,7 +6,7 @@ import Portfolio from './portfolio'
 
 const HomeComponent = (props) => {
   return (
-   <Portfolio {...props} />
+    <Portfolio {...props} />
   )
 }
 

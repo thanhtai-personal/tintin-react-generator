@@ -14,18 +14,18 @@ export const useLazyLoadSection = (WrappedComponent, { elementId, width = '100%'
                     setIsLoaded(true)
                 }, 200)
             }
-        }, [ isLoaded ])
+        }, [isLoaded])
 
         useEffect(() => {
             handleScroll()
             window.addEventListener('scroll', handleScroll)
             return () => { window.removeEventListener('scroll', handleScroll) }
-        // for componentDidMount
-        // eslint-disable-next-line
+            // for componentDidMount
+            // eslint-disable-next-line
         }, [])
         return isLoaded ? <Zoom in={isLoaded} timeout={{ enter: 200, appear: 500 }}>
-                <WrappedComponent {...props}/>
-            </Zoom> 
+            <WrappedComponent {...props} />
+        </Zoom>
             : <div id={elementId} style={{
                 width, height, backgroundColor: 'white'
             }}></div>
@@ -34,45 +34,45 @@ export const useLazyLoadSection = (WrappedComponent, { elementId, width = '100%'
 }
 
 export const useLazyLoadImage = (WrappedComponent, elementId) => {
-  const LazyLoadImage = (props) => {
-    const [loaded, setLoaded] = useState(false)
-    let imgElm = document.getElementById(elementId)
+    const LazyLoadImage = (props) => {
+        const [loaded, setLoaded] = useState(false)
+        let imgElm = document.getElementById(elementId)
 
-    const handleScroll = useCallback(() => {
-        if (!loaded && isElementInViewport(imgElm)) {
-            // Load real image
-            const imgLoader = new Image()
-            imgLoader.src = props.src
-            imgLoader.onload = () => {
-                const ratioWH = imgLoader.width / imgLoader.height
-                imgElm.setAttribute(
-                    `src`,
-                    `${props.src}`
-                )
-                props.keepRatio && this.imgElm.setAttribute(
-                    `height`,
-                    `${props.width / ratioWH}`
-                )
-                imgElm.classList.add(`${props.effect}`)
-                setLoaded(true)
+        const handleScroll = useCallback(() => {
+            if (!loaded && isElementInViewport(imgElm)) {
+                // Load real image
+                const imgLoader = new Image()
+                imgLoader.src = props.src
+                imgLoader.onload = () => {
+                    const ratioWH = imgLoader.width / imgLoader.height
+                    imgElm.setAttribute(
+                        `src`,
+                        `${props.src}`
+                    )
+                    props.keepRatio && this.imgElm.setAttribute(
+                        `height`,
+                        `${props.width / ratioWH}`
+                    )
+                    imgElm.classList.add(`${props.effect}`)
+                    setLoaded(true)
+                }
             }
-        }
-    }, [props.src, props.keepRatio, props.effect, imgElm, props.width, loaded])
+        }, [props.src, props.keepRatio, props.effect, imgElm, props.width, loaded])
 
-    useEffect(() => {
-        handleScroll()
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-          window.removeEventListener('scroll', this.handleScroll)
-        }
-    // for componentDidMount
-    //eslint-disable-next-line
-    }, [])
-    const { id, ...nestedProps } = props
-    return (
-      <WrappedComponent id={elementId} {...nestedProps} />
-    )
-  }
+        useEffect(() => {
+            handleScroll()
+            window.addEventListener('scroll', handleScroll);
+            return () => {
+                window.removeEventListener('scroll', this.handleScroll)
+            }
+            // for componentDidMount
+            //eslint-disable-next-line
+        }, [])
+        const { id, ...nestedProps } = props
+        return (
+            <WrappedComponent id={elementId} {...nestedProps} />
+        )
+    }
 
-  return LazyLoadImage
+    return LazyLoadImage
 }

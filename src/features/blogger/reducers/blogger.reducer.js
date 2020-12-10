@@ -1,5 +1,6 @@
 
-import { UPDATE_DETAIL_BLOG
+import {
+  UPDATE_DETAIL_BLOG
   , UPDATE_ACTIVE_TAB
 } from '../actions/types'
 import { GitHub, LinkedIn, Person } from '@material-ui/icons'
@@ -77,7 +78,7 @@ const initalState = {
     social: [
       { name: 'GitHub', icon: GitHub, url: 'https://github.com/thanhtai-personal' },
       { name: 'Linkedin', icon: LinkedIn, url: 'https://www.linkedin.com/in/tran-thanh-tai-539250129/' },
-      { name: 'Personal Site', icon: Person, url: 'https://tttgalaxy.co.uk'},
+      { name: 'Personal Site', icon: Person, url: 'https://tttgalaxy.co.uk' },
     ],
   },
   detail: {},

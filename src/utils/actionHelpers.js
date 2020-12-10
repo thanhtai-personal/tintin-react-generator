@@ -1,5 +1,5 @@
 
-const makeSagasActionType =  (actionType) => {
+const makeSagasActionType = (actionType) => {
   return {
     SUCCESS: `${actionType}_SUCCESS`,
     FAILED: `${actionType}_FAILED`,

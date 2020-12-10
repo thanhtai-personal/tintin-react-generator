@@ -7,11 +7,11 @@ const combineHoc = (hocObj) => {
 
 function createHocs() {
   // Create an object which maps keys to hocs
-  const hocObj = { 
+  const hocObj = {
     [hocKeys.multiTheme]: useMultiThemes
   }
   // Create the initial combinedHOC
-  let hocs = [ useMultiThemes ]
+  let hocs = [useMultiThemes]
 
   return {
     getHocsMap: () => hocObj,
@@ -21,7 +21,7 @@ function createHocs() {
       return hocs
     },
 
-    
+
     call: (hocName, wrappedComponent) => {
       return hocObj[hocName](wrappedComponent)
     },

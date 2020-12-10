@@ -11,7 +11,7 @@ const BlogDetail = (props) => {
 
   useEffect(() => {
     updateDetailBlogger && typeof updateDetailBlogger === 'function' && updateDetailBlogger(props.match?.params?.key || 'noPost')
-  }, [ updateDetailBlogger, props.match?.params?.key])
+  }, [updateDetailBlogger, props.match?.params?.key])
 
   useEffect(() => {
     fetch(detail?.content)
@@ -21,12 +21,12 @@ const BlogDetail = (props) => {
       .then(text => {
         setMarkdown(text)
       })
-      //eslint-disable-next-line
+    //eslint-disable-next-line
   }, [])
 
   return (
     <Container>
-      <MarkDown style={{ padding: '2em', minHeight: '91vh'}}>
+      <MarkDown style={{ padding: '2em', minHeight: '91vh' }}>
         {markdown}
       </MarkDown>
     </Container>

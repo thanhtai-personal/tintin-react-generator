@@ -1,4 +1,4 @@
-const  logger = ({ getState }) => {
+const logger = ({ getState }) => {
   return next => action => {
     console.log('will dispatch', action)
 

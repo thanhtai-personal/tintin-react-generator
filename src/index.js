@@ -14,11 +14,11 @@ const NODE_MOUNT = document.getElementById('root')
 const renderApp = () =>
   render(
     // <StrictMode>
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <AppRoute />
-        </ConnectedRouter>
-      </Provider>,
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <AppRoute />
+      </ConnectedRouter>
+    </Provider>,
     // </StrictMode>,
     NODE_MOUNT
   )

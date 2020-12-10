@@ -9,7 +9,7 @@ const defaultRoutes = [
     path: '/blogger',
     isExact: true,
     component: BloggerContainer,
-    hocs: [ hocKeys.multiTheme ],
+    hocs: [hocKeys.multiTheme],
     setUpStore: setUpFeature
   },
   {
@@ -17,7 +17,7 @@ const defaultRoutes = [
     path: '/blogger/:key',
     isExact: true,
     component: BlogDetailContainer,
-    hocs: [ hocKeys.multiTheme ],
+    hocs: [hocKeys.multiTheme],
     setUpStore: setUpFeature
   },
 ]

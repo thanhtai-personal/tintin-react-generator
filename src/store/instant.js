@@ -6,7 +6,7 @@ const history = createBrowserHistory()
 var StoreSingleton = (() => {
   var store;
   return {
-    getInstance: function(){
+    getInstance: function () {
       // check if instance is available
       if (!store) {
         store = configureStore({}, history);

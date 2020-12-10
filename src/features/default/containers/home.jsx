@@ -6,7 +6,7 @@ const HomeComponent = React.lazy(() => import('../components/default'))
 const HomeContainer = (props) => {
   return (
     <Suspense fallback={<LoadingComponent />}>
-      <HomeComponent {...props}/>
+      <HomeComponent {...props} />
     </Suspense>
   )
 }
