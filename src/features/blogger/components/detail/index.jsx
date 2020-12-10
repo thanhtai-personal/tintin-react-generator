@@ -14,11 +14,17 @@ const BlogDetail = (props) => {
   }, [updateDetailBlogger, props.match?.params?.key])
 
   useEffect(() => {
+    console.log('component did mount!!', detail?.content)
+    console.log('------------------------------------------')
     fetch(detail?.content)
       .then(response => {
+        console.log('response', response)
+        console.log('------------------------------------------')
         return response?.text()
       })
       .then(text => {
+        console.log('text', text)
+        console.log('------------------------------------------')
         setMarkdown(text)
       })
     //eslint-disable-next-line
