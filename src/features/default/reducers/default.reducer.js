@@ -23,9 +23,7 @@ const initalState = {
   profileData: {
     image: profileImageDefault,
     imageText: 'profile image',
-    sortDescription: ` am a highly motivated full-stack web developer who loves to write a scalable code and research to do it
-    , and alway try to create apps with more and more comfortable for user.
-    Ambitious and looking forward to work with people who also loves coding and make users happy.`,
+    sortDescription: ` am a highly motivated full-stack web developer who loves to write a scalable code and research to do it, and always try to create apps with more and more comfortable for the user. Ambitious and looking forward to work with people who also loves coding and make users happy.`,
     informations: [
       {
         key: 'birthDay',
