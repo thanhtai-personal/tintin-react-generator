@@ -1,11 +1,28 @@
 import React, { useState, useEffect } from 'react'
+import { makeStyles } from '@material-ui/core'
 import { isElementInViewport } from 'root/utils'
-import { Zoom } from '@material-ui/core'
+import bannerImage from 'root/assert/images/mini-profile-bg-01.jpg'
 import { useCallback } from 'react'
 
+const useStyle = makeStyles((theme) => {
+  return {
+    lazyLoadStyle: {
+      animation: `$blurAnimation 2500ms  ${theme.transitions.easing.easeInOut}`
+    },
+    '@keyframes blurAnimation': {
+      '0%': {
+        opacity: 0,
+      },
+      '100%': {
+        opacity: 1
+      },
+    }
+  }
+})
 
 export const useLazyLoadSection = (WrappedComponent, { elementId, width = '100%', height = '200px' }) => {
     const LazyLoadComponent = (props) => {
+        const classes = useStyle()
         const [isLoaded, setIsLoaded] = useState(false)
         const handleScroll = useCallback(() => {
             const sectionElement = document.getElementById(elementId)
@@ -23,9 +40,9 @@ export const useLazyLoadSection = (WrappedComponent, { elementId, width = '100%'
             // for componentDidMount
             // eslint-disable-next-line
         }, [])
-        return isLoaded ? <Zoom in={isLoaded} timeout={{ enter: 200, appear: 500 }}>
+        return isLoaded ? <div className={classes.lazyLoadStyle} in={isLoaded} timeout={{ enter: 200, appear: 500 }}>
             <WrappedComponent {...props} />
-        </Zoom>
+        </div>
             : <div id={elementId} style={{
                 width, height, backgroundColor: 'white'
             }}></div>
@@ -75,4 +92,24 @@ export const useLazyLoadImage = (WrappedComponent, elementId) => {
     }
 
     return LazyLoadImage
+}
+
+
+export const makeLazyLoadBackgroundImage = (ComposedComponent) => {
+
+  const LazyLoadBackgroundImageComponent = (props) => {
+    const [source, setSource] = useState('')
+    const { src } = props
+
+    useEffect(() => {
+      const imageLoader = new Image()
+      imageLoader.src = src
+      imageLoader.onload = () => {
+        setSource({ src })
+      }
+    }, [src])
+  
+    return <ComposedComponent {...props} style={{ backgroundImage: `url(${source || props.placeholder})` }} />
+  }
+  return LazyLoadBackgroundImageComponent
 }

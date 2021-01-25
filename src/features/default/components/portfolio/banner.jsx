@@ -73,10 +73,7 @@ export default function Banner(props) {
   const { post } = props
 
   return (
-    <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(${post.image})` }}>
-      {<picture>
-        <img style={{ display: 'none' }} src={post.image} alt={post.imageText} />
-      </picture>}
+    <Paper className={classes.mainFeaturedPost}>
       <div className={classes.overlay} />
       <div className={classes.mainFeaturedPostContent}>
         <Grid container className={classes.bannerContent}>

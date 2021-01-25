@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles, Container, Paper, Grid, useMediaQuery } from '@material-ui/core'
-import { useLazyLoadSection } from 'root/utils/renderHelper'
+import { useLazyLoadSection, makeLazyLoadBackgroundImage } from 'root/utils/renderHelper'
 import BannerComponent from './banner'
 import Footer from './footer'
 import ProfileComponent from './profile'
@@ -28,7 +28,7 @@ const useStyle = makeStyles(theme => {
 
 const Portfolio = (props) => {
 
-  const Banner = useLazyLoadSection(BannerComponent, { height: '1188px', elementId: 'banner' })
+  const Banner = makeLazyLoadBackgroundImage(BannerComponent)
   const Profile = useLazyLoadSection(ProfileComponent, { height: '340px', elementId: 'profile' })
   const Skills = useLazyLoadSection(SkillsComponent, { height: '340px', elementId: 'skills' })
   const Hobbies = useLazyLoadSection(HobbiesComponent, { height: '152px', elementId: 'hobbies' })
@@ -41,7 +41,7 @@ const Portfolio = (props) => {
     <React.Fragment>
       <Container maxWidth='lg'>
         <main>
-          <Banner post={props.bannerData} />
+          <Banner post={props.bannerData} src={props.bannerData?.image} />
           <Grid container className={classes.profile} style={isDesktop ? {} : { height: 'auto' }}>
             <Grid item xs={isDesktop ? 9 : 12}>
               <Profile profileData={props.profileData} />
