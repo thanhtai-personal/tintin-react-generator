@@ -17,7 +17,15 @@ const defaultRoutes = [
     component: HomeContainer,
     hocs: [],
     setUpStore: setUpFeature
-  }
+  },
+  {
+    key: 'default',
+    path: '/',
+    isExact: true,
+    component: HomeContainer,
+    hocs: [],
+    setUpStore: setUpFeature
+  },
 ]
 
 export default defaultRoutes

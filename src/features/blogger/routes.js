@@ -20,14 +20,14 @@ const defaultRoutes = [
     hocs: [hocKeys.multiTheme],
     setUpStore: setUpFeature
   },
-  {
-    key: 'default',
-    path: '/',
-    isExact: true,
-    component: BloggerContainer,
-    hocs: [hocKeys.multiTheme],
-    setUpStore: setUpFeature
-  },
+  // {
+  //   key: 'default',
+  //   path: '/',
+  //   isExact: true,
+  //   component: BloggerContainer,
+  //   hocs: [hocKeys.multiTheme],
+  //   setUpStore: setUpFeature
+  // },
 ]
 
 export default defaultRoutes
