@@ -3,12 +3,12 @@ import setUpFeature from './setup'
 
 const defaultRoutes = [
   {
-    key: 'default',
-    path: '/profile',
+    key: 'profilev1',
+    path: '/profilev1',
     isExact: true,
     component: HomeContainer,
     hocs: [],
-    setUpStore: setUpFeature
+    // setUpStore: setUpFeature
   },
   {
     key: 'home',
@@ -18,14 +18,14 @@ const defaultRoutes = [
     hocs: [],
     setUpStore: setUpFeature
   },
-  {
-    key: 'default',
-    path: '/',
-    isExact: true,
-    component: HomeContainer,
-    hocs: [],
-    setUpStore: setUpFeature
-  },
+  // {
+  //   key: 'default',
+  //   path: '/',
+  //   isExact: true,
+  //   component: HomeContainer,
+  //   hocs: [],
+  //   setUpStore: setUpFeature
+  // },
 ]
 
 export default defaultRoutes

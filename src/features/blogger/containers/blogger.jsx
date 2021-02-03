@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
 import LoadingComponent from 'root/commonComponents/loading'
 
-const BloggerComponent = React.lazy(() => import('../components/blog'))
+const BloggerComponent = React.lazy(() => import('../components/setupBlog'))
 
 const BloggerContainer = (props) => {
   return (
