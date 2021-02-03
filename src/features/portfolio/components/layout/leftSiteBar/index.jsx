@@ -13,7 +13,7 @@ const container = window !== undefined ? () => window.document.body : undefined
 const useStyle = makeStyles(theme => {
   return {
     leftSideBar: {
-      backgroundColor: Color.black1,
+      backgroundColor: Color.black2,
       display: 'flex',
       height: '100%',
       flexDirection: 'column',
@@ -23,7 +23,7 @@ const useStyle = makeStyles(theme => {
       padding: 0
     },
     drawerPaper: {
-      backgroundColor: Color.black1,
+      backgroundColor: Color.black2,
       width: CssVariable.leftBarWidth,
       overflow: 'hidden',
       justifyContent: 'space-between'
@@ -50,7 +50,7 @@ const LeftSideBar = (props) => {
     <div id='nav_bar' className={classes.leftSideBar}>
       <Drawer
         container={container}
-        variant='temporary'
+        variant='persistent'
         anchor='left'
         open={true}
         classes={{

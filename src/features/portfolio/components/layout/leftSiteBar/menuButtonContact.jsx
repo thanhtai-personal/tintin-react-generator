@@ -1,4 +1,4 @@
-import React, { useReducer, useCallback } from 'react'
+import React, { useReducer } from 'react'
 import MenuButton from './commons/menuButton'
 import menuButtonsContactData from './data/menuButtonsContact'
 import leftMenuContactReducer from './../../../reducers/leftMenuContact.reducer'
@@ -16,6 +16,7 @@ const useStyle = makeStyles(theme => {
 
 const MenuButtonsContact = (props) => {
   const classes = useStyle()
+  //eslint-disable-next-line
   const [{ menuItems }, setMenuButton] = useReducer(leftMenuContactReducer, { menuItems: menuButtonsContactData })
 
   return (
