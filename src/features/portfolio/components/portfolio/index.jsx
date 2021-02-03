@@ -5,6 +5,7 @@ import { portfolioActions } from '../../actions'
 const PortfolioComponent = (props) => {
   return (
     <div>
+      portfolio content
     </div>
   )
 }

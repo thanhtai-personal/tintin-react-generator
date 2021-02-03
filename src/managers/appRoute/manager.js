@@ -16,7 +16,10 @@ const combineRoute = (appRoutes) => {
     let resultComponent = route.component
     if (Array.isArray(route.hocs)) {
       route.hocs.forEach((hoc) => {
-        resultComponent = hocInstant.call(hoc, resultComponent)
+        if (typeof hoc === 'string') resultComponent = hocInstant.call(hoc, resultComponent)
+        else if (hoc.componentHoc) {
+          resultComponent = hoc.componentHoc(resultComponent)
+        }
       })
     }
     return <Route key={route.key} path={route.path} exact={route.isExact} component={resultComponent} />

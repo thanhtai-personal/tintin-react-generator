@@ -1,4 +1,6 @@
 import PortfolioContainer from './containers/portfolio'
+import { hocKeys } from './utils'
+import useLeftSideBar from './hocs/useLeftSideBar'
 // import setUpFeature from './setup'
 
 const portfolioRoutes = [
@@ -7,7 +9,12 @@ const portfolioRoutes = [
     path: '/',
     isExact: true,
     component: PortfolioContainer,
-    hocs: [],
+    hocs: [
+      { 
+        key: hocKeys.useLeftSideBar,
+        componentHoc: useLeftSideBar
+      }
+    ],
     // setUpStore: setUpFeature
   },
   {
@@ -15,7 +22,12 @@ const portfolioRoutes = [
     path: '/profile',
     isExact: true,
     component: PortfolioContainer,
-    hocs: [],
+    hocs: [
+      { 
+        key: hocKeys.useLeftSideBar,
+        componentHoc: useLeftSideBar
+      }
+    ],
     // setUpStore: setUpFeature
   },
 ]
