@@ -54,7 +54,7 @@ const MenuButton = (props) => {
 
   const handleClick = useCallback((e) => {
     if (!url) e.preventDefault()
-    else onClick(e, { value })
+    onClick && onClick(e, { value })
   }, [onClick, url, value])
 
   return (

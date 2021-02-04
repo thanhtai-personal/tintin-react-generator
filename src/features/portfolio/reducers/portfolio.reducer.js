@@ -1,28 +1,19 @@
 
-import Utils from 'root/utils'
+// import Utils from 'root/utils'
 import {
-  PORTFOLIO_ACTION,
+  SET_ACTIVE_MENU,
 } from '../actions/types'
 
 const initalState = {
+  activeMenu: 'home'
 }
 
 const defaultReducer = (state = initalState, { type, payload }) => {
   switch (type) {
-    case PORTFOLIO_ACTION:
+    case SET_ACTIVE_MENU:
       return {
         ...state,
-        ...payload
-      }
-    case Utils.makeSagasActionType(PORTFOLIO_ACTION).SUCCESS:
-      return {
-        ...state,
-        ...payload
-      }
-    case Utils.makeSagasActionType(PORTFOLIO_ACTION).FAILED:
-      return {
-        ...state,
-        ...payload
+        activeMenu: payload || 'home'
       }
     default:
       return state

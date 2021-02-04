@@ -3,7 +3,6 @@ import logoWhite from 'root/assert/images/logo_white512.png'
 import MenuButtons from './menuButtons'
 import MenuButtonsContact from './menuButtonContact'
 import { Drawer , makeStyles
-  // , Divider
 } from '@material-ui/core'
 import Color from 'root/utils/color'
 import CssVariable from 'root/utils/cssVariable'
@@ -63,7 +62,6 @@ const LeftSideBar = (props) => {
         <img src={logoWhite} className={classes.logo} alt='T' />
         </a>
         <MenuButtons />
-        {/* <Divider className={classes.dividerColor}/> */}
         <MenuButtonsContact />
       </Drawer>
     </div>

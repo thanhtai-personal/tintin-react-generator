@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import cssVariable from 'root/utils/cssVariable'
 import Color from 'root/utils/color'
@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '60px',
     cursor: 'text',
     fontFamily: 'font-file-82132',
+    textRendering: 'optimizeLegibility',
     '&:hover': {
       animation: `$tCharAnimHover 500ms ${theme.transitions.easing.easeIn}`,
       color: Color.green
@@ -92,34 +93,155 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(2)
   },
   titleText: {
-    paddingLeft: theme.spacing(6)
+    paddingLeft: theme.spacing(6),
+    animation: `$appearTextAnim1 2000ms ${theme.transitions.easing.easeIn}`,
+    textRendering: 'optimizeLegibility'
+  },
+  '@keyframes appearTextAnim1': {
+    '0%': {
+      opacity: 0,
+      marginLeft: '-100px'
+    },
+    '100%': {
+      opacity: 1,
+      marginLeft: '0%'
+    }
+  },
+  appearText: {
+    animation: `$appearTextAnim 350ms ${theme.transitions.easing.easeIn}`,
+  },
+  '@keyframes appearTextAnim': {
+    '0%': {
+      borderBottom: `solid 3px ${Color.yellow}`,
+    },
+    '100%': {
+      borderBottom: 0
+    }
+  },
+  aboutContent: {
+    marginTop: '60px'
+  },
+  aboutContentText: {
+    color: 'beige',
+    maxWidth: '600px',
+    wordWrap: 'break-word',
+    overflow: 'break-word',
+    marginTop: theme.spacing(2),
+    marginLeft: theme.spacing(6),
+    fontSize: '18px',
+    fontWeight: 400,
+    lineHeight: '24px',
+    letterSpacing: '2px'
+  },
+  titleText2: {
+    fontSize: '60px',
+    letterSpacing: '1px',
+    fontWeight: 450,
+    wordWrap: 'break-word',
+    maxWidth: '400px'
   }
 }))
 
 const helloSent = `Hi, I’m Tài Trần, Web developer.`
 
 const HomeComponent = (props) => {
+  const { activeMenu } = props
   const classes = useStyles()
+
+  const [title, setTitle] = useState(helloSent)
+  const [contentText, setContentText] = useState({})
+
+  const handleClickContactMe = useCallback(() => {
+    window.open('/profilev1', '_blank')
+  }, [])
+
+  useEffect(() => {
+    switch (activeMenu) {
+      case 'home':
+        setTitle(helloSent)
+        setContentText({})
+        break;
+      case 'about':
+        setTitle('About me')
+        setContentText({
+          text1: 'Professionally connected with the web development industry and information technology for many years.',
+          text2: 'Well-organised person, problem solver, independent employee with high attention to detail. Fan of MMA, outdoor activities, TV series and, recently, English literature. A family person, father of two fractious boys, therefore remote employment is preferred.',
+          text3: 'Interested in the entire frontend spectrum and working on ambitious projects with positive people.',
+        })
+        break;
+      case 'skills':
+        setTitle('Skills & Experiences')
+        setContentText({
+          text1: 'The main area of my expertise is front end development (client side of the web).',
+          text2: 'HTML, CSS, JS, TypeScript, building small and medium web apps with ReactJS, class, hooks, redux, animation, phaser and coding interactive layouts.',
+          text3: 'I have also full-stack developer experience with .Net, expressJS, java, scalaJS',
+        })
+        break;
+      case 'contact':
+        setTitle('Contact me')
+        setContentText({
+          text1: 'I am interested in freelance opportunities. However, if you have other request or question, don’t hesitate to contact me.',
+          text2: '',
+          text3: '',
+        })
+        break;
+      case 'gallery':
+        setTitle('')
+        setContentText({
+          text1: '',
+          text2: '',
+          text3: '',
+        })
+        break;
+      default:
+        return
+    }
+  }, [activeMenu])
 
   return (
     <div className={classes.homePage}>
       <Typography className={[classes.tag, classes.topTags].join(' ')}> &lt;html&gt;<br /> &nbsp;&nbsp;&nbsp;&lt;body&gt;</Typography>
       <div className={classes.textZone}>
         <Typography className={[classes.tag, classes.tab1].join(' ')}> &nbsp;&nbsp;&nbsp;&lt;h1&gt;</Typography>
-        <Typography aria-label={helloSent} variant={'h1'} className={classes.titleText}>
-          {helloSent.split('').map((char, index) => (
-            <React.Fragment key={`${char}-${index}`}>
-              <span className={[classes.flashWord, char === 'T' ? classes.tChar : ''].join(' ')}>{char}</span>
-              {char === ',' && <br />}
-            </React.Fragment>
-          ))}
+        <Typography aria-label={title} variant={'h1'} className={classes.titleText} style={
+          activeMenu === 'home' ? {
+          } : {
+              color: Color.green,
+              fontWeight: 550,
+              fontSize: '60px'
+            }}>
+          {activeMenu === 'home' ? title.split('').map((char, index) => {
+            let delayTime = 2000 + (index * 350)
+            return (
+              <React.Fragment key={`${char}-${index}`}>
+                <span className={[classes.flashWord, char === 'T' ? classes.tChar : '', classes.appearText].join(' ')}
+                  style={{
+                    animationDelay: `${delayTime}ms`
+                  }}
+                >{char}</span>
+                {char === ',' && <br />}
+              </React.Fragment>
+            )
+          }) : <Typography className={classes.titleText2}
+          >{title}</Typography>}
         </Typography>
         <Typography className={[classes.tag, classes.tab1].join(' ')}> &nbsp;&nbsp;&nbsp;&lt;/h1&gt;</Typography>
-        <Typography variant={'h2'} className={classes.subTitle}>
+        {activeMenu === 'home' && <Typography variant={'h2'} className={classes.subTitle}>
           Back/Front End Developer / Node - ReactJS
-        </Typography>
+        </Typography>}
+        {activeMenu !== 'home' && activeMenu !== 'gallery' && <div className={classes.aboutContent}>
+          <Typography variant={'h3'} align={'left'} className={classes.aboutContentText}>
+            {contentText.text1}
+          </Typography>
+          <Typography variant={'h3'} align={'left'} className={classes.aboutContentText}>
+            {contentText.text2}
+          </Typography>
+          <Typography variant={'h3'} align={'left'} className={classes.aboutContentText}>
+            {contentText.text3}
+          </Typography>
+        </div>}
         <br />
-        <Button className={classes.contactBtn}> Contact me! </Button>
+        {(activeMenu === 'home' || activeMenu === 'contact' ) && <Button onClick={handleClickContactMe} className={classes.contactBtn}> Contact me! </Button>}
       </div>
       <Typography className={[classes.tag, classes.bottomTags].join(' ')}> &nbsp;&nbsp;&nbsp;&lt;/body&gt;<br /> &lt;/html&gt; </Typography>
     </div>

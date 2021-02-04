@@ -4,6 +4,7 @@ import { portfolioActions } from '../../actions'
 import Color from 'root/utils/color'
 import Home from './home'
 import Watch from './watch'
+import Gallery from './gallery'
 import './resetCss.css'
 import { makeStyles } from '@material-ui/core/styles'
 import cssVariable from 'root/utils/cssVariable'
@@ -19,17 +20,20 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const PortfolioComponent = (props) => {
+  const { activeMenu } = props
   const classes = useStyles()
 
   return (
     <div className={classes.pageContent}>
-      <Home />
-      <Watch />
+      {activeMenu !== 'gallery' && <Home activeMenu={activeMenu}/>}
+      {activeMenu === 'gallery' && <Gallery />}
+      {activeMenu === 'home' && <Watch />}
     </div>
   )
 }
 
 const mapState = (state) => ({
+  activeMenu: state?.portfolio?.activeMenu
 })
 
 const mapDispatch = {
