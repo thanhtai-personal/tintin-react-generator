@@ -108,10 +108,10 @@ const HomeComponent = (props) => {
         <Typography className={[classes.tag, classes.tab1].join(' ')}> &nbsp;&nbsp;&nbsp;&lt;h1&gt;</Typography>
         <Typography aria-label={helloSent} variant={'h1'} className={classes.titleText}>
           {helloSent.split('').map((char, index) => (
-            <>
-              <span key={`${char}-${index}`} className={[classes.flashWord, char === 'T' ? classes.tChar : ''].join(' ')}>{char}</span>
+            <React.Fragment key={`${char}-${index}`}>
+              <span className={[classes.flashWord, char === 'T' ? classes.tChar : ''].join(' ')}>{char}</span>
               {char === ',' && <br />}
-            </>
+            </React.Fragment>
           ))}
         </Typography>
         <Typography className={[classes.tag, classes.tab1].join(' ')}> &nbsp;&nbsp;&nbsp;&lt;/h1&gt;</Typography>

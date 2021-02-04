@@ -3,13 +3,13 @@ import { connect } from 'react-redux'
 import { portfolioActions } from '../../actions'
 import Color from 'root/utils/color'
 import Home from './home'
+import Watch from './watch'
 import './resetCss.css'
 import { makeStyles } from '@material-ui/core/styles'
 import cssVariable from 'root/utils/cssVariable'
 
 const useStyles = makeStyles((theme) => ({
   pageContent: {
-    backgroundColor: Color.white,
     width: '100vw',
     minHeight: '100vh',
     margin: 0,
@@ -24,6 +24,7 @@ const PortfolioComponent = (props) => {
   return (
     <div className={classes.pageContent}>
       <Home />
+      <Watch />
     </div>
   )
 }

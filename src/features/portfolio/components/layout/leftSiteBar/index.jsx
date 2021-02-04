@@ -8,7 +8,6 @@ import { Drawer , makeStyles
 import Color from 'root/utils/color'
 import CssVariable from 'root/utils/cssVariable'
 
-const container = window !== undefined ? () => window.document.body : undefined
 
 const useStyle = makeStyles(theme => {
   return {
@@ -49,7 +48,6 @@ const LeftSideBar = (props) => {
   return (
     <div id='nav_bar' className={classes.leftSideBar}>
       <Drawer
-        container={container}
         variant='persistent'
         anchor='left'
         open={true}
