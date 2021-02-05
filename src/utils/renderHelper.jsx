@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core'
 import { isElementInViewport } from 'root/utils'
-import bannerImage from 'root/assert/images/mini-profile-bg-01.jpg'
 import { useCallback } from 'react'
 
 const useStyle = makeStyles((theme) => {

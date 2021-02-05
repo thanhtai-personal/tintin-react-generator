@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { connect } from 'react-redux'
 import { portfolioActions } from '../../actions'
 import Color from 'root/utils/color'
@@ -7,7 +7,9 @@ import Watch from './watch'
 import Gallery from './gallery'
 import './resetCss.css'
 import { makeStyles } from '@material-ui/core/styles'
+import { Typography } from '@material-ui/core'
 import cssVariable from 'root/utils/cssVariable'
+const SoundComponent = React.lazy(() => import('root/commonComponents/soundFactory/component'))
 
 const useStyles = makeStyles((theme) => ({
   pageContent: {
@@ -17,6 +19,13 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: cssVariable.leftBarWidth,
     backgroundColor: Color.black2
   },
+  soundInfo: {
+    position: 'absolute',
+    top: '10px',
+    right: '10px',
+    float: 'right',
+    color: Color.white
+  }
 }))
 
 const PortfolioComponent = (props) => {
@@ -28,6 +37,9 @@ const PortfolioComponent = (props) => {
       {activeMenu !== 'gallery' && <Home activeMenu={activeMenu}/>}
       {activeMenu === 'gallery' && <Gallery />}
       {activeMenu === 'home' && <Watch />}
+      <Suspense fallback={<Typography className={classes.soundInfo}>SOUND: Loading...</Typography>}>
+        <SoundComponent />
+      </Suspense>
     </div>
   )
 }
