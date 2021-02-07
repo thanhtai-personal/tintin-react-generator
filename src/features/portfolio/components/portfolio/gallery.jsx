@@ -27,8 +27,8 @@ import gallery25 from 'root/assert/images/galerry/25.jpg'
 
 const images = [
   {
-    original: gallery25,
-    thumbnail: gallery25,
+    original: gallery24,
+    thumbnail: gallery24,
   },
   {
     original: gallery2,
@@ -43,10 +43,6 @@ const images = [
     thumbnail: gallery6,
   },
   {
-    original: gallery7,
-    thumbnail: gallery7,
-  },
-  {
     original: gallery8,
     thumbnail: gallery8,
   },
@@ -55,8 +51,8 @@ const images = [
     thumbnail: gallery9,
   },
   {
-    original: gallery10,
-    thumbnail: gallery10,
+    original: gallery7,
+    thumbnail: gallery7,
   },
   {
     original: gallery11,
@@ -65,6 +61,10 @@ const images = [
   {
     original: gallery12,
     thumbnail: gallery12,
+  },
+  {
+    original: gallery25,
+    thumbnail: gallery25,
   },
   {
     original: gallery13,
@@ -105,10 +105,6 @@ const images = [
   {
     original: gallery22,
     thumbnail: gallery22,
-  },
-  {
-    original: gallery24,
-    thumbnail: gallery24,
   },
   {
     original: gallery23,

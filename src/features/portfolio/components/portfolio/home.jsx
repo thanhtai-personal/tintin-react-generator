@@ -131,7 +131,16 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '18px',
     fontWeight: 400,
     lineHeight: '24px',
-    letterSpacing: '2px'
+    letterSpacing: '2px',
+    animation: `$aboutContentAppear 350ms ${theme.transitions.easing.easeIn}`,
+  },
+  '@keyframes aboutContentAppear': {
+    '0%': {
+      opacity: 0,
+    },
+    '100%': {
+    opacity: 1
+    }
   },
   titleText2: {
     fontSize: '60px',
