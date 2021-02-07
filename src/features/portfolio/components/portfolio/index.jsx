@@ -7,12 +7,13 @@ import Watch from './watch'
 import Gallery from './gallery'
 import './resetCss.css'
 import { makeStyles } from '@material-ui/core/styles'
-import { Typography } from '@material-ui/core'
+import { Typography, useMediaQuery } from '@material-ui/core'
 import cssVariable from 'root/utils/cssVariable'
 import PianoComponent from './piano'
 const SoundComponent = React.lazy(() => import('root/commonComponents/soundFactory/component'))
+const SingleSoundComponent = React.lazy(() => import('root/commonComponents/soundFactory/singleSound'))
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = (props) => (makeStyles((theme) => ({
   pageContent: {
     minWidth: '90vw',
     maxWidth: '100vw',
@@ -32,17 +33,21 @@ const useStyles = makeStyles((theme) => ({
   pianoWrap: {
     position: 'absolute',
     bottom: 0,
-    left: '70px',
+    left: props.maxWidth1240 ? '70px' : 'calc(50vw - 22em)',
     float: 'left',
     color: Color.white,
     opacity: '0.3',
-    pointerEvents: 'none'
+    pointerEvents: 'none',
+  },
+  watchWrap: {
+    display: props.maxWidth1240 ? 'inherit' : 'none'
   }
-}))
+})))
 
 const PortfolioComponent = (props) => {
   const { activeMenu } = props
-  const classes = useStyles()
+  const maxWidth1240 = useMediaQuery('(min-width: 1240px)')
+  const classes = useStyles({ maxWidth1240 })()
 
   return (
     <div className={classes.pageContent}>
@@ -50,9 +55,12 @@ const PortfolioComponent = (props) => {
       {activeMenu === 'gallery' && <Suspense fallback={<div></div>}>
         <Gallery />
       </Suspense>}
-      {activeMenu !== 'gallery' && <Watch />}
+      {activeMenu !== 'gallery' && <div className={classes.watchWrap}> <Watch /> </div>}
       <Suspense fallback={<Typography className={classes.soundInfo}>SOUND: Loading...</Typography>}>
         <SoundComponent />
+      </Suspense>
+      <Suspense fallback={<Typography className={classes.soundInfo}>MUSIC: Loading...</Typography>}>
+        <SingleSoundComponent />
       </Suspense>
       {activeMenu !== 'gallery'
         && <div className={classes.pianoWrap}>

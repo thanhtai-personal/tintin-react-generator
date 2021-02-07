@@ -6,6 +6,7 @@ import leftMenuReducer from './../../../reducers/leftMenu.reducer'
 import { UPDATE_ACTIVE_LEFT_MENU } from './../../../actions/types'
 import { makeStyles } from '@material-ui/core'
 import { globalSetActiveMenu } from './../../../actions' 
+import { singleSoundKeys } from 'root/commonComponents/soundFactory/smallSounds/singleSound/singleSounds' 
 
 const useStyle = makeStyles(theme => {
   return {
@@ -20,11 +21,13 @@ const MenuButtons = (props) => {
   const classes = useStyle()
   const { globalSetActiveMenu } = props
   const [{ menuItems }, setMenuButton] = useReducer(leftMenuReducer, { menuItems: menuButtonsData })
-
   const setActiveMenu = useCallback((e, data) => {
+    window.triggerSingleSoundsByKey
+      && typeof window.triggerSingleSoundsByKey === 'function'
+      && window.triggerSingleSoundsByKey(singleSoundKeys.beat, window.singleSoundsList)
     globalSetActiveMenu(data.value)
     setMenuButton({ type: UPDATE_ACTIVE_LEFT_MENU, payload: data.value })
-  }, [setMenuButton])
+  }, [setMenuButton, globalSetActiveMenu])
 
   return (
     <nav className={classes.menuButtons}>

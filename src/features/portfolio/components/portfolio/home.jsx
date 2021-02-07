@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import cssVariable from 'root/utils/cssVariable'
 import Color from 'root/utils/color'
+import { singleSoundKeys } from 'root/commonComponents/soundFactory/smallSounds/singleSound/singleSounds'
 import { Button, Typography } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
@@ -139,7 +140,7 @@ const useStyles = makeStyles((theme) => ({
       opacity: 0,
     },
     '100%': {
-    opacity: 1
+      opacity: 1
     }
   },
   titleText2: {
@@ -161,6 +162,9 @@ const HomeComponent = (props) => {
   const [contentText, setContentText] = useState({})
 
   const handleClickContactMe = useCallback(() => {
+    window.triggerSingleSoundsByKey
+      && typeof window.triggerSingleSoundsByKey === 'function'
+      && window.triggerSingleSoundsByKey(singleSoundKeys.superMario, window.singleSoundsList)
     window.open('/profilev1', '_blank')
   }, [])
 
@@ -250,7 +254,7 @@ const HomeComponent = (props) => {
           </Typography>
         </div>}
         <br />
-        {(activeMenu === 'home' || activeMenu === 'contact' ) && <Button onClick={handleClickContactMe} className={classes.contactBtn}> Contact me! </Button>}
+        {(activeMenu === 'home' || activeMenu === 'contact') && <Button onClick={handleClickContactMe} className={classes.contactBtn}> Contact me! </Button>}
       </div>
       <Typography className={[classes.tag, classes.bottomTags].join(' ')}> &nbsp;&nbsp;&nbsp;&lt;/body&gt;<br /> &lt;/html&gt; </Typography>
     </div>
