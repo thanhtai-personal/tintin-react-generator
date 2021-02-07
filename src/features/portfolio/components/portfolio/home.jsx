@@ -165,7 +165,7 @@ const HomeComponent = (props) => {
         setTitle('About me')
         setContentText({
           text1: 'Professionally connected with the web development industry and information technology for many years.',
-          text2: 'Well-organised person, problem solver, independent employee with high attention to detail. Fan of MMA, outdoor activities, TV series and, recently, English literature. A family person, father of two fractious boys, therefore remote employment is preferred.',
+          text2: 'Well-organised person, problem solver, independent employee with high attention to detail. Fan of football, Manchester United.',
           text3: 'Interested in the entire frontend spectrum and working on ambitious projects with positive people.',
         })
         break;
