@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: '28px !important',
     fontSize: '60px',
     cursor: 'text',
-    fontFamily: 'font-file-82132',
+    fontFamily: `'Potta One', cursive`, //'font-file-82132',
     textRendering: 'optimizeLegibility',
     '&:hover': {
       animation: `$tCharAnimHover 500ms ${theme.transitions.easing.easeIn}`,
@@ -96,7 +96,8 @@ const useStyles = makeStyles((theme) => ({
   titleText: {
     paddingLeft: theme.spacing(6),
     animation: `$appearTextAnim1 2000ms ${theme.transitions.easing.easeIn}`,
-    textRendering: 'optimizeLegibility'
+    textRendering: 'optimizeLegibility',
+    fontFamily: `'Potta One', cursive`
   },
   '@keyframes appearTextAnim1': {
     '0%': {
@@ -148,7 +149,8 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: '1px',
     fontWeight: 450,
     wordWrap: 'break-word',
-    maxWidth: '400px'
+    maxWidth: '400px',
+    fontFamily: `'Potta One', cursive`
   }
 }))
 
