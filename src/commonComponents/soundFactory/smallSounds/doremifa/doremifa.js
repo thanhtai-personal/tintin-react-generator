@@ -15,23 +15,42 @@ import siStretchedSound from 'root/assert/sounds/si-stretched.wav'
 import doOctaveSound from 'root/assert/sounds/do-octave.wav'
 import doOctaveStretchedSound from 'root/assert/sounds/do-stretched-octave.wav'
 
+export const doremifaKeys = {
+  do: 'do',
+  do2: 'do2',
+  re: 're',
+  re2: 're2',
+  mi: 'mi',
+  mi2: 'mi2',
+  fa: 'fa',
+  fa2: 'fa2',
+  sol: 'sol',
+  sol2: 'sol2',
+  la: 'la',
+  la2: 'la2',
+  si: 'si',
+  si2: 'si2',
+  doOct: 'doOct',
+  doOct2: 'doOct2',
+}
+
 const doremifaSound = {
-  do: doSound,
-  do2: doStretchedSound,
-  re: reSound,
-  re2: reStretchedSound,
-  mi: miSound,
-  mi2: miStretchedSound,
-  fa: faSound,
-  fa2: faStretchedSound,
-  sol: solSound,
-  sol2: solStretchedSound,
-  la: laSound,
-  la2: laStretchedSound,
-  si: siSound,
-  si2: siStretchedSound,
-  doOct: doOctaveSound,
-  doOct2: doOctaveStretchedSound,
+  [doremifaKeys.do]: doSound,
+  [doremifaKeys.do2]: doStretchedSound,
+  [doremifaKeys.re]: reSound,
+  [doremifaKeys.re2]: reStretchedSound,
+  [doremifaKeys.mi]: miSound,
+  [doremifaKeys.mi2]: miStretchedSound,
+  [doremifaKeys.fa]: faSound,
+  [doremifaKeys.fa2]: faStretchedSound,
+  [doremifaKeys.sol]: solSound,
+  [doremifaKeys.sol2]: solStretchedSound,
+  [doremifaKeys.la]: laSound,
+  [doremifaKeys.la2]: laStretchedSound,
+  [doremifaKeys.si]: siSound,
+  [doremifaKeys.si2]: siStretchedSound,
+  [doremifaKeys.doOct]: doOctaveSound,
+  [doremifaKeys.doOct2]: doOctaveStretchedSound,
 }
 
 export default doremifaSound

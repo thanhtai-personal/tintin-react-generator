@@ -8,7 +8,8 @@
   font-family: 'Open Sans', sans-serif;
   position: absolute;
   top: 0;
-  right: 350px;
+  right: 220px;
+  opacity: 0.6;
 }
 .wrapper {
   position: relative;

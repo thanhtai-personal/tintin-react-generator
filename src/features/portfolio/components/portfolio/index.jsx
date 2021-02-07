@@ -9,6 +9,7 @@ import './resetCss.css'
 import { makeStyles } from '@material-ui/core/styles'
 import { Typography } from '@material-ui/core'
 import cssVariable from 'root/utils/cssVariable'
+import PianoComponent from './piano'
 const SoundComponent = React.lazy(() => import('root/commonComponents/soundFactory/component'))
 
 const useStyles = makeStyles((theme) => ({
@@ -25,6 +26,15 @@ const useStyles = makeStyles((theme) => ({
     right: '10px',
     float: 'right',
     color: Color.white
+  },
+  pianoWrap: {
+    position: 'absolute',
+    bottom: 0,
+    left: '70px',
+    float: 'left',
+    color: Color.white,
+    opacity: '0.3',
+    pointerEvents: 'none'
   }
 }))
 
@@ -34,12 +44,17 @@ const PortfolioComponent = (props) => {
 
   return (
     <div className={classes.pageContent}>
-      {activeMenu !== 'gallery' && <Home activeMenu={activeMenu}/>}
+      {activeMenu !== 'gallery' && <Home activeMenu={activeMenu} />}
       {activeMenu === 'gallery' && <Gallery />}
-      {activeMenu === 'home' && <Watch />}
+      {/* {activeMenu === 'home' && <Watch />} */}
+      {activeMenu !== 'gallery' && <Watch />}
       <Suspense fallback={<Typography className={classes.soundInfo}>SOUND: Loading...</Typography>}>
         <SoundComponent />
       </Suspense>
+      {activeMenu !== 'gallery'
+        && <div className={classes.pianoWrap}>
+          <PianoComponent />
+        </div>}
     </div>
   )
 }
