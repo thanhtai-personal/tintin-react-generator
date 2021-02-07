@@ -14,11 +14,13 @@ const SoundComponent = React.lazy(() => import('root/commonComponents/soundFacto
 
 const useStyles = makeStyles((theme) => ({
   pageContent: {
-    width: '100vw',
+    minWidth: '90vw',
+    maxWidth: '100vw',
     minHeight: '100vh',
     margin: 0,
     paddingLeft: cssVariable.leftBarWidth,
-    backgroundColor: Color.black2
+    backgroundColor: Color.black2,
+    
   },
   soundInfo: {
     position: 'absolute',
@@ -45,8 +47,9 @@ const PortfolioComponent = (props) => {
   return (
     <div className={classes.pageContent}>
       {activeMenu !== 'gallery' && <Home activeMenu={activeMenu} />}
-      {activeMenu === 'gallery' && <Gallery />}
-      {/* {activeMenu === 'home' && <Watch />} */}
+      {activeMenu === 'gallery' && <Suspense fallback={<div></div>}>
+        <Gallery />
+      </Suspense>}
       {activeMenu !== 'gallery' && <Watch />}
       <Suspense fallback={<Typography className={classes.soundInfo}>SOUND: Loading...</Typography>}>
         <SoundComponent />
