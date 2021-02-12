@@ -8,8 +8,8 @@ const sources = Object.keys(singleSounds).map((key) => ({
   type: null
 }))
 
-const DoremifaSoundComponent = (props) => {
+const SingleSoundsComponent = (props) => {
   return <SoundComponent {...props} sources={sources} style={{ display: 'none' }}/>
 }
 
-export default DoremifaSoundComponent
+export default SingleSoundsComponent

@@ -24,7 +24,7 @@ const MenuButtons = (props) => {
   const setActiveMenu = useCallback((e, data) => {
     window.triggerSingleSoundsByKey
       && typeof window.triggerSingleSoundsByKey === 'function'
-      && window.triggerSingleSoundsByKey(singleSoundKeys.beat, window.singleSoundsList)
+      && window.triggerSingleSoundsByKey(singleSoundKeys.zapsplat, window.singleSoundsList)
     globalSetActiveMenu(data.value)
     setMenuButton({ type: UPDATE_ACTIVE_LEFT_MENU, payload: data.value })
   }, [setMenuButton, globalSetActiveMenu])

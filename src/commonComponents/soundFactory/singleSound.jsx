@@ -18,7 +18,7 @@ const triggerSingleSoundsByKey = (key, audioList) => {
         audioList[1]?.player?.play()
       } catch (error) { console.log('error catched!!!') }
       break;
-    case singleSoundKeys.beat:
+    case singleSoundKeys.zapsplat:
       try {
         audioList[2]?.player?.play()
       } catch (error) { console.log('error catched!!!') }

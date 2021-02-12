@@ -1,6 +1,6 @@
 import superMario from 'root/assert/sounds/supermario.mp3'
 import gloryGlory from 'root/assert/sounds/gloryglory.mp3'
-import beat from 'root/assert/sounds/beat.mp3'
+import beat from 'root/assert/sounds/zapsplat.mp3'
 
 export const singleSoundKeys = {
   superMario: 'superMario',
