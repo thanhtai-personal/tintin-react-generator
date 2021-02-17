@@ -95,8 +95,16 @@ const GridImageComponent = (props) => {
   const handleChangeUploadInput = useCallback((event) => {
     const files = event.target.files
     const file = files && files[0] ? files[0] : {}
+    if (!file || (
+      file // 👈 null and undefined check
+      && Object.keys(file).length === 0 && file.constructor === Object
+    )) return
     setPicture(URL.createObjectURL(file))
   }, [setPicture])
+
+  const handleImageError = useCallback(() => {
+    return
+  }, [])
 
   const handleChangeShowGridSwitch = useCallback((event, data) => {
     setIsShowGrid(data)
@@ -141,6 +149,18 @@ const GridImageComponent = (props) => {
     })
   }, [setImageSize])
 
+  const handleOrientationChange = useCallback(() => {
+    const imgElement = document.getElementById('image')
+    imgElement.src = picture
+  }, [picture])
+
+  useEffect(() => {
+    window.addEventListener('orientationchange', handleOrientationChange)
+    return () => {
+      window.removeEventListener('orientationchange', handleOrientationChange)
+    }
+  }, [handleOrientationChange])
+
   return (<>
     <div className={classes.gridImageContainer}>
       <div className={classes.imageWrapper}>
@@ -151,7 +171,7 @@ const GridImageComponent = (props) => {
           opacity={opacity}
         />}
         {/* eslint-disable-next-line */}
-        {picture && <img alt='uploaded-image' id='image' className={classes.image} src={picture} onLoad={handleLoadedImage} />}
+        {picture && <img alt='uploaded-image' id='image' className={classes.image} src={picture} onError={handleImageError} onLoad={handleLoadedImage} />}
       </div>
       <Grid container spacing={1} alignContent={'center'} className={classes.actions}>
         <Grid item xs={12} className={classes.fileUploadWrapper}
