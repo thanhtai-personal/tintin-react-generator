@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import { Grid, makeStyles, Switch, NativeSelect, Typography, Input, Checkbox } from '@material-ui/core'
 import { documentSizeToImageSize } from './utils'
 import { documentSize, documentSizeVertical } from './constants'
@@ -53,9 +53,12 @@ const useStyle = () => (makeStyles((theme) => {
 const GridImageComponent = (props) => {
   const [picture, setPicture] = useState('')
   const [isRotate, setIsRotate] = useState(false)
+  const [isWhiteGrid, setIsWhiteGrid] = useState(false)
   const [isShowGrid, setIsShowGrid] = useState(false)
-  const [paperSize, setPaperSize] = useState(null)
-  const [numOfGrid, setNumOfGrid] = useState(0)
+  const [paperSize, setPaperSize] = useState('A0')
+  const [numOfGrid, setNumOfGrid] = useState(1)
+  const [opacity, setOpacity] = useState(50)
+  const [imageSize, setImageSize] = useState({})
   const [gridTableData, setGridTableData] = useState({
     width: 0,
     height: 0,
@@ -64,6 +67,17 @@ const GridImageComponent = (props) => {
   })
   const classes = useStyle({})()
 
+  const handleGridTableData = useCallback(() => {
+    if (!paperSize || numOfGrid < 1) return
+    const gridSize = documentSizeToImageSize(isRotate ? documentSizeVertical[paperSize]: documentSize[paperSize], imageSize)
+    const gridBox = gridSize.getGridSize(numOfGrid)
+    setGridTableData({
+      ...gridBox,
+      numCols: numOfGrid,
+      numRows: (gridSize.height / gridBox.height) + 1
+    })
+  }, [numOfGrid, paperSize, isRotate, imageSize])
+
   const handleChangeUploadInput = useCallback((event) => {
     const files = event.target.files
     const file = files && files[0] ? files[0] : {}
@@ -71,50 +85,55 @@ const GridImageComponent = (props) => {
   }, [setPicture])
 
   const handleChangeShowGridSwitch = useCallback((event, data) => {
-    handleGridTableData()
     setIsShowGrid(data)
   }, [setIsShowGrid])
 
-  const handleGridTableData = useCallback(() => {
-    if (!paperSize || numOfGrid < 1) return
-    const imageEle = document.getElementById('image')
-    if (!imageEle) return
-    const gridSize = documentSizeToImageSize(isRotate ? documentSizeVertical[paperSize]: documentSize[paperSize], {
-      width: imageEle.offsetWidth,
-      height: imageEle.offsetHeight
-    })
-    const gridBox = gridSize.getGridSize(numOfGrid)
-    setGridTableData({
-      ...gridBox,
-      numCols: numOfGrid,
-      numRows: (gridSize.height / gridBox.height) + 1
-    })
-  }, [numOfGrid, paperSize, isRotate])
+  useEffect(() => {
+    handleGridTableData()
+  }, [numOfGrid, paperSize, isRotate, imageSize])
 
   const handleChangeNumOfGrid = useCallback((e) => {
     setNumOfGrid(parseInt(e.target?.value || -1))
-    handleGridTableData()
-  }, [handleGridTableData])
+  }, [setNumOfGrid])
+
+  const handleOpacity = useCallback((e) => {
+    setOpacity(parseInt(e.target?.value || -1))
+  }, [setOpacity])
 
   const handleChangePaperSize = useCallback((event) => {
     const value = event?.target?.value
     setPaperSize(value)
-    handleGridTableData()
-  }, [handleGridTableData, setPaperSize])
+  }, [setPaperSize])
 
   const handleChangeIsRotate = useCallback((event) => {
     const checked = event.target.checked
     setIsRotate(checked)
-    handleGridTableData()
-  }, [handleGridTableData, setIsRotate])
+  }, [setIsRotate])
+
+  const handleChangeIsWhiteGrid = useCallback((event) => {
+    const checked = event.target.checked
+    setIsWhiteGrid(checked)
+  }, [setIsWhiteGrid])
+
+  const handleLoadedImage = useCallback(() => {
+    const imgElement = document.getElementById('image')
+    if (!imgElement) return
+    setImageSize({
+      width: imgElement.offsetWidth,
+      height: imgElement.offsetHeight,
+    })
+  }, [setImageSize])
 
   return (<>
     <div className={classes.gridImageContainer}>
       <div className={classes.imageWrapper}>
         {isShowGrid && <GridTable
           {...gridTableData}
+          imageSize={imageSize}
+          whiteGrid={isWhiteGrid}
+          opacity={opacity}
         />}
-        <img id='image' className={classes.image} src={picture} />
+        <img id='image' className={classes.image} src={picture} onLoad={handleLoadedImage} />
       </div>
       <Grid container spacing={1} className={classes.actions}>
         <Grid item xs={12}>
@@ -141,11 +160,19 @@ const GridImageComponent = (props) => {
             </Grid>
             <Grid item xs={2}>
               <Typography variant={'body2'} className={classes.actionLabel}>Num of columns: </Typography>
-              <Input type={'number'} inputProps={{ max: 16, min: 0 }} defaultValue={numOfGrid} onChange={handleChangeNumOfGrid} />
+              <Input type={'number'} inputProps={{ max: 32, min: 1 }} defaultValue={numOfGrid} onChange={handleChangeNumOfGrid} />
             </Grid>
             <Grid item xs={2}>
               <Typography variant={'body2'} className={classes.actionLabel}>Is rotate 90: </Typography>
               <Checkbox defaultValue={isRotate} onChange={handleChangeIsRotate} />
+            </Grid>
+            <Grid item xs={2}>
+              <Typography variant={'body2'} className={classes.actionLabel}>White grid: </Typography>
+              <Checkbox defaultValue={isWhiteGrid} onChange={handleChangeIsWhiteGrid} />
+            </Grid>
+            <Grid item xs={2}>
+              <Typography variant={'body2'} className={classes.actionLabel}>Grid opacity (%): </Typography>
+              <Input type={'number'} inputProps={{ max: 100, min: 10 }} defaultValue={opacity} onChange={handleOpacity} />
             </Grid>
           </Grid>
         </Grid>
