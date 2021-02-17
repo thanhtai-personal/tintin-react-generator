@@ -151,14 +151,16 @@ const GridImageComponent = (props) => {
 
   const handleOrientationChange = useCallback(() => {
     const imgElement = document.getElementById('image')
-    imgElement.src = picture
+    if(picture) imgElement.src = picture
   }, [picture])
 
   useEffect(() => {
     window.addEventListener('orientationchange', handleOrientationChange)
     window.addEventListener('onresize', handleOrientationChange)
+    window.addEventListener('deviceorientation', handleOrientationChange)
     return () => {
       window.removeEventListener('orientationchange', handleOrientationChange)
+      window.removeEventListener('deviceorientation', handleOrientationChange)
       window.removeEventListener('onresize', handleOrientationChange)
     }
   }, [handleOrientationChange])
