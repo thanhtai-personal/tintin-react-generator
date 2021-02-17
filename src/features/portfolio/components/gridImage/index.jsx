@@ -154,7 +154,7 @@ const GridImageComponent = (props) => {
         {picture && <img alt='uploaded-image' id='image' className={classes.image} src={picture} onLoad={handleLoadedImage} />}
       </div>
       <Grid container spacing={1} alignContent={'center'} className={classes.actions}>
-        <Grid item xs={12} classes={classes.fileUploadWrapper}
+        <Grid item xs={12} className={classes.fileUploadWrapper}
           style={ picture ? {
             marginBottom: '2em',
             marginTop: '2em'
