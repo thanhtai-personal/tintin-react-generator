@@ -32,9 +32,10 @@ const documentSizeOptionsElem = documentSizeOptions.map((item, index) => (
 
 const useStyle = () => (makeStyles((theme) => {
   return {
-    gridImageContainer: {
+    fileUploadWrapper: {
+      paddingBottom: theme.spacing(3)
     },
-    fileUpload: {
+    gridImageContainer: {
     },
     imageWrapper: {
     },
@@ -43,9 +44,22 @@ const useStyle = () => (makeStyles((theme) => {
       height: 'auto'
     },
     actions: {
+      alignContent: 'center',
+      textAlign: 'center',
+      justifyContent: 'center'
     },
     actionLabel: {
       fontSize: '12px'
+    },
+    inputFile: {
+      cursor: 'pointer',
+      content: 'Select your image',
+      '&:before': {
+        cursor: 'pointer'
+      },
+      '&#file-upload-button': {
+        cursor: 'pointer'
+      }
     }
   }
 }))
@@ -90,10 +104,13 @@ const GridImageComponent = (props) => {
 
   useEffect(() => {
     handleGridTableData()
-  }, [numOfGrid, paperSize, isRotate, imageSize])
+  }, [numOfGrid, paperSize, isRotate, imageSize, handleGridTableData])
 
   const handleChangeNumOfGrid = useCallback((e) => {
-    setNumOfGrid(parseInt(e.target?.value || -1))
+    let value = e.target?.value
+    if (value < 1) value = 1
+    if (value > 32) value = 32
+    setNumOfGrid(parseInt(value || -1))
   }, [setNumOfGrid])
 
   const handleOpacity = useCallback((e) => {
@@ -133,14 +150,32 @@ const GridImageComponent = (props) => {
           whiteGrid={isWhiteGrid}
           opacity={opacity}
         />}
-        <img id='image' className={classes.image} src={picture} onLoad={handleLoadedImage} />
+        {/* eslint-disable-next-line */}
+        {picture && <img alt='uploaded-image' id='image' className={classes.image} src={picture} onLoad={handleLoadedImage} />}
       </div>
-      <Grid container spacing={1} className={classes.actions}>
-        <Grid item xs={12}>
-          <input type='file' classes={classes.fileUpload}
+      <Grid container spacing={1} alignContent={'center'} className={classes.actions}>
+        <Grid item xs={12} classes={classes.fileUploadWrapper}
+          style={ picture ? {
+            marginBottom: '2em',
+            marginTop: '2em'
+           } : {
+            border: 'double 1px black',
+            minHeight: '70vh',
+            marginBottom: '2em',
+            justifyContent: 'center',
+            alignContent: 'center',
+            textAlign: 'center',
+            verticalAlign: 'center',
+            alignItems: 'center',
+            display: 'flex'
+          }}
+        >
+          <input type='file'
             onChange={handleChangeUploadInput}
             accept={fileTypes.reduce((ft, current) => (`${current}, ${ft}`))}
             multiple={false}
+            className={classes.inputFile}
+            aria-label={'Select your image'}
           ></input>
         </Grid>
         <Grid item xs={12}>
@@ -159,7 +194,7 @@ const GridImageComponent = (props) => {
               </NativeSelect>
             </Grid>
             <Grid item xs={2}>
-              <Typography variant={'body2'} className={classes.actionLabel}>Num of columns: </Typography>
+              <Typography variant={'body2'} className={classes.actionLabel}>Num of columns: (1-32) </Typography>
               <Input type={'number'} inputProps={{ max: 32, min: 1 }} defaultValue={numOfGrid} onChange={handleChangeNumOfGrid} />
             </Grid>
             <Grid item xs={2}>
