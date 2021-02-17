@@ -156,8 +156,10 @@ const GridImageComponent = (props) => {
 
   useEffect(() => {
     window.addEventListener('orientationchange', handleOrientationChange)
+    window.addEventListener('onresize', handleOrientationChange)
     return () => {
       window.removeEventListener('orientationchange', handleOrientationChange)
+      window.removeEventListener('onresize', handleOrientationChange)
     }
   }, [handleOrientationChange])
 
