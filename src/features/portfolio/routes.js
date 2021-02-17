@@ -9,12 +9,12 @@ const portfolioRoutes = [
     key: 'default',
     path: '/',
     isExact: true,
-    component: PortfolioContainer,
+    component: GridImageContainer,
     hocs: [
-      { 
-        key: hocKeys.useLeftSideBar,
-        componentHoc: useLeftSideBar
-      }
+      // { 
+        // key: hocKeys.useLeftSideBar,
+        // componentHoc: useLeftSideBar
+      // }
     ],
     // setUpStore: setUpFeature
   },

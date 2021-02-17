@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react'
-import { Grid, makeStyles, Switch, NativeSelect, Typography, Input, Checkbox } from '@material-ui/core'
+import { Grid, makeStyles, Switch, NativeSelect, Typography, Input, Checkbox, Button } from '@material-ui/core'
 import { documentSizeToImageSize } from './utils'
 import { documentSize, documentSizeVertical } from './constants'
 import GridTable from './gridTable'
@@ -83,7 +83,7 @@ const GridImageComponent = (props) => {
 
   const handleGridTableData = useCallback(() => {
     if (!paperSize || numOfGrid < 1) return
-    const gridSize = documentSizeToImageSize(isRotate ? documentSizeVertical[paperSize]: documentSize[paperSize], imageSize)
+    const gridSize = documentSizeToImageSize(isRotate ? documentSizeVertical[paperSize] : documentSize[paperSize], imageSize)
     const gridBox = gridSize.getGridSize(numOfGrid)
     setGridTableData({
       ...gridBox,
@@ -161,6 +161,11 @@ const GridImageComponent = (props) => {
     }
   }, [handleOrientationChange])
 
+  const goToProfile = useCallback(() => {
+    window.history.pushState({}, 'profile', '/profile')
+    window.history.go()
+  }, [])
+
   return (<>
     <div className={classes.gridImageContainer}>
       <div className={classes.imageWrapper}>
@@ -175,20 +180,20 @@ const GridImageComponent = (props) => {
       </div>
       <Grid container spacing={1} alignContent={'center'} className={classes.actions}>
         <Grid item xs={12} className={classes.fileUploadWrapper}
-          style={ picture ? {
+          style={picture ? {
             marginBottom: '2em',
             marginTop: '2em'
-           } : {
-            border: 'double 1px black',
-            minHeight: '70vh',
-            marginBottom: '2em',
-            justifyContent: 'center',
-            alignContent: 'center',
-            textAlign: 'center',
-            verticalAlign: 'center',
-            alignItems: 'center',
-            display: 'flex'
-          }}
+          } : {
+              border: 'double 1px black',
+              minHeight: '70vh',
+              marginBottom: '2em',
+              justifyContent: 'center',
+              alignContent: 'center',
+              textAlign: 'center',
+              verticalAlign: 'center',
+              alignItems: 'center',
+              display: 'flex'
+            }}
         >
           <input type='file'
             onChange={handleChangeUploadInput}
@@ -230,6 +235,18 @@ const GridImageComponent = (props) => {
               <Input type={'number'} inputProps={{ max: 100, min: 10 }} defaultValue={opacity} onChange={handleOpacity} />
             </Grid>
           </Grid>
+        </Grid>
+        <Grid item xs={12}>
+          <Button
+            style={{
+              width: '100%',
+              color: 'red',
+              marginTop: '2em',
+            }}
+            onClick={goToProfile}
+          >
+            Contact me via my profile!
+          </Button>
         </Grid>
       </Grid>
     </div>
